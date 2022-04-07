@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Error404 from './Error404';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface Props {}
+
+interface States {
+  lang: string;
+  tutorialDone: boolean;
 }
 
-export default App;
+export default class App extends React.Component<Props, States> {
+  componentDidMount() {
+    const lsLang = localStorage.getItem('lang');
+    const lsTuto = localStorage.getItem('tutorialDone');
+    localStorage.setItem('lang', !lsLang ? 'en' : lsLang);
+    localStorage.setItem('tutorial-done', (lsTuto === 'true').toString());
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Routes>
+          {/* <Route path="/welcome" element={<Welcome />} /> */}
+          <Route path="/*" element={<Error404 />} />
+          {/* <Route path="/" element={<POIList />} /> */}
+          {/* <Route path="/:id" element={<POI />} /> */}
+          {/* <Route path="/language" element={<Language />} /> */}
+          {/* <Route path="/congrat" element={<Congrat />} /> */}
+        </Routes>
+      </div>
+    );
+  }
+}
