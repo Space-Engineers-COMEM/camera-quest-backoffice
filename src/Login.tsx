@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MailInput, PswInput } from './input/LoginInputs';
 
@@ -40,6 +40,29 @@ export default function Login() {
       setErrorMsg('Merci de remplir tous les champs.');
     }
   };
+
+  // Redirect user if already logged in.
+  const alreadyLoggedIn = () => {
+    const token = localStorage.getItem('token');
+    const url = 'http://127.0.0.1:3333/token';
+    const init = {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }),
+    };
+
+    fetch(url, init)
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.isLoggedIn) {
+          navigate('/');
+        }
+      });
+  };
+
+  useEffect(() => alreadyLoggedIn);
 
   return (
     <form onSubmit={handleSubmit}>
