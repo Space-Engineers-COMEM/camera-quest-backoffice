@@ -1,43 +1,15 @@
 /* eslint-disable max-classes-per-file */
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MailInput, PswInput } from './input/LoginInputs';
 
-interface Props {}
+export default function Login() {
+  const [validMail, setEmailValidation] = useState(false);
+  const [validPsw, setPswValidation] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const navigate = useNavigate();
 
-interface State {
-  validMail: boolean;
-  validPsw: boolean;
-  errorMsg: string;
-}
-
-export default class Login extends React.Component<Props, State> {
-  constructor(props: never) {
-    super(props);
-    this.state = { validMail: false, validPsw: false, errorMsg: '' };
-    this.setEmailValidation = this.setEmailValidation.bind(this);
-    this.setPswValidation = this.setPswValidation.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(evt: any) {
-    evt.preventDefault();
-    if (this.state.validMail && this.state.validPsw) {
-      // Static for dev purpose
-      this.postCredentials('noemail@noemail.ch', 'password');
-    } else {
-      this.setState({ errorMsg: 'Merci de remplir tous les champs.' });
-    }
-  }
-
-  setEmailValidation(valid: boolean): void {
-    this.setState({ validMail: valid });
-  }
-
-  setPswValidation(valid: boolean): void {
-    this.setState({ validPsw: valid });
-  }
-
-  postCredentials(mail: string, psw: string) {
+  const postCredentials = (mail: string, psw: string) => {
     const apiUrl = 'http://127.0.0.1:3333/login';
     const init = {
       method: 'POST',
@@ -47,29 +19,35 @@ export default class Login extends React.Component<Props, State> {
       body: JSON.stringify({ email: mail, password: psw }),
     };
 
-    console.log(init.body);
-
     fetch(apiUrl, init)
       .then((res) => res.json())
       .then((res) => {
         if (res.type === 'error') {
-          this.setState({ errorMsg: res.content });
+          setErrorMsg(res.content);
         } else {
           localStorage.setItem('token', res.token);
-          this.context.router.push('/');
+          navigate('/');
         }
       });
-  }
+  };
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <h1>Hello World</h1>
-        <small>{this.state.errorMsg || ''}</small>
-        <MailInput setValidation={this.setEmailValidation} />
-        <PswInput setValidation={this.setPswValidation} />
-        <input type="submit" value="Login" />
-      </form>
-    );
-  }
+  const handleSubmit = (evt: any) => {
+    evt.preventDefault();
+    if (validMail && validPsw) {
+      const { mail, psw } = evt.target;
+      postCredentials(mail.value, psw.value);
+    } else {
+      setErrorMsg('Merci de remplir tous les champs.');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <h1>Hello World</h1>
+      <small>{errorMsg || ''}</small>
+      <MailInput setValidation={setEmailValidation} />
+      <PswInput setValidation={setPswValidation} />
+      <input type="submit" value="Login" />
+    </form>
+  );
 }
