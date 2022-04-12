@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Error404 from './Error404';
 import Login from './Login';
 import Home from './Home';
+import Pois from './Pois';
 
 interface Props {}
 
@@ -25,6 +26,7 @@ export default class App extends React.Component<Props, States> {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
+          <Route path="/objets" element={<Pois />} />
           <Route path="/*" element={<Error404 />} />
           {/* <Route path="/:id" element={<POI />} /> */}
           {/* <Route path="/language" element={<Language />} /> */}

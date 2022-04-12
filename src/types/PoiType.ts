@@ -1,4 +1,4 @@
-export default interface PoiType {
+export type PoiType = {
   id: number;
   azure_tag: string;
   exhibition_number: number;
@@ -8,4 +8,4 @@ export default interface PoiType {
   visible: boolean;
   description: string;
   origin: string;
-}
+};

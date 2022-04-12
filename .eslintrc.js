@@ -28,5 +28,6 @@ module.exports = {
     'react/require-default-props': [1],
     'react/no-unused-state': [1],
     'jsx-a11y/label-has-associated-control': [0],
+    'no-else-return': [0, { allowElseIf: true }],
   },
 };
