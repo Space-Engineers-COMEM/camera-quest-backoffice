@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PoiDetail from './PoiCard';
+import PoiCard from './PoiCard';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -36,7 +36,7 @@ export default function PoisList() {
     return (
       <ul>
         {pois.map((poi) => (
-          <PoiDetail
+          <PoiCard
             key={poi.id}
             id={poi.id}
             title={poi.title}

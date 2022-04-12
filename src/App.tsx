@@ -1,38 +1,48 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Error404 from './Error404';
 import Login from './Login';
 import Home from './Home';
 import Pois from './Pois';
+import PoiDetail from './input/poi/PoiDetail';
+import Modal from './layout/Modal';
 
-interface Props {}
+type Props = {};
 
-interface States {
+type States = {
   lang: string;
   tutorialDone: boolean;
-}
+};
 
-export default class App extends React.Component<Props, States> {
-  componentDidMount() {
+export default function App(props: Props) {
+  const location = useLocation();
+  const state = location.state as { backgroundLocation?: Location };
+
+  useEffect(() => {
     const lsLang = localStorage.getItem('lang');
     const lsTuto = localStorage.getItem('tutorialDone');
     localStorage.setItem('lang', !lsLang ? 'en' : lsLang);
     localStorage.setItem('tutorial-done', (lsTuto === 'true').toString());
-  }
+  });
 
-  render() {
-    return (
-      <div className="App">
+  return (
+    <div className="App">
+      <Routes location={state?.backgroundLocation || location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/objets" element={<Pois />} />
+        <Route path="/objets/:id" element={<PoiDetail />} />
+        <Route path="/*" element={<Error404 />} />
+        {/* <Route path="/:id" element={<POI />} /> */}
+        {/* <Route path="/language" element={<Language />} /> */}
+        {/* <Route path="/congrat" element={<Congrat />} /> */}
+      </Routes>
+
+      {state?.backgroundLocation && (
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/objets" element={<Pois />} />
-          <Route path="/*" element={<Error404 />} />
-          {/* <Route path="/:id" element={<POI />} /> */}
-          {/* <Route path="/language" element={<Language />} /> */}
-          {/* <Route path="/congrat" element={<Congrat />} /> */}
+          <Route path="/objets/:id" element={<PoiDetail />} />
         </Routes>
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 }
