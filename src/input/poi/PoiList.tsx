@@ -16,7 +16,7 @@ export default function PoisList() {
   // Fetch POIs
   useEffect(() => {
     axios
-      .get(`${API_URL}/pois/previews`)
+      .get(`${API_URL}/pois`)
       .then((res: any) => {
         setIsLoaded(true);
         setPois(res.data);
@@ -40,7 +40,7 @@ export default function PoisList() {
             key={poi.id}
             id={poi.id}
             title={poi.title}
-            imagePath={poi.imagePath}
+            imageUrl={poi.image_url}
             area={poi.area}
           />
         ))}

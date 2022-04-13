@@ -6,7 +6,7 @@ import PoiTags from '../../content/poi/PoiTags';
 type PoiProps = {
   id: number;
   title: string;
-  imagePath: string;
+  imageUrl: string;
   area: string;
 };
 
@@ -17,7 +17,7 @@ export default function PoiCard(props: PoiProps) {
     <li>
       <button type="button">Supprimer</button>
       <br />
-      <img alt="" src={props.imagePath} />
+      <img alt="" src={props.imageUrl} />
       <div>{props.title}</div>
       <div>Étage {props.area}</div>
       <PoiTags poiId={props.id} langId={1} />
