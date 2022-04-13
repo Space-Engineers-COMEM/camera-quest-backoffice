@@ -1,11 +1,11 @@
 export type PoiType = {
   id: number;
-  azure_tag: string;
   exhibition_number: number;
   title: string;
-  author: string;
+  manufacturer: string;
   periode: string;
-  visible: boolean;
-  description: string;
-  origin: string;
+  archived: boolean;
+  area: number;
+  image_url: string;
+  location: string;
 };

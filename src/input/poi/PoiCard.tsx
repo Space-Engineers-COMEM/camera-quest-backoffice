@@ -7,7 +7,7 @@ type PoiProps = {
   id: number;
   title: string;
   imageUrl: string;
-  area: string;
+  area: number;
 };
 
 export default function PoiCard(props: PoiProps) {

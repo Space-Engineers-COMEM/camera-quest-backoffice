@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PoiCard from './PoiCard';
+import { PoiType } from '../../types/PoiType';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -9,7 +10,7 @@ const API_URL = process.env.REACT_APP_API_URL;
  * @returns A list of POIs
  */
 export default function PoisList() {
-  const [pois, setPois] = useState<any[]>([]);
+  const [pois, setPois] = useState<PoiType[]>([]);
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
