@@ -5,7 +5,8 @@ import Login from './Login';
 import Home from './Home';
 import Pois from './Pois';
 import PoiDetail from './input/poi/PoiDetail';
-import Modal from './layout/Modal';
+
+/* Is this still relevant ?
 
 type Props = {};
 
@@ -13,8 +14,9 @@ type States = {
   lang: string;
   tutorialDone: boolean;
 };
+*/
 
-export default function App(props: Props) {
+export default function App() {
   const location = useLocation();
   const state = location.state as { backgroundLocation?: Location };
 

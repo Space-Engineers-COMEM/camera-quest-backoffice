@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PoiTags from '../../content/poi/PoiTags';
-import Modal from '../../layout/Modal';
 
 type PoiProps = {
   id: number;
