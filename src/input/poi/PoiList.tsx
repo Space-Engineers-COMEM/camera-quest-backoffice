@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { PoiType } from '../../types/PoiType';
 import PoiCard from './PoiCard';
 import { PoiType } from '../../types/PoiType';
 
@@ -10,7 +11,7 @@ const API_URL = process.env.REACT_APP_API_URL;
  * @returns A list of POIs
  */
 export default function PoisList() {
-  const [pois, setPois] = useState<PoiType[]>([]);
+  const [pois, setPois] = useState<PoiType[]>();
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -31,7 +32,7 @@ export default function PoisList() {
   // Display POIs when loaded
   if (error) {
     return <div>{error.message}</div>;
-  } else if (!isLoaded) {
+  } else if (!isLoaded || !pois) {
     return <div>Loading...</div>;
   } else {
     return (

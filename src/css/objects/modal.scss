@@ -1,0 +1,22 @@
+/********************************
+ * MODAL (OBJECT)
+ ********************************/
+// Layout of modals
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #00000044;
+}
+
+.modal__container {
+  background-color: var(--background-color);
+  padding: 1rem 0.5rem;
+  border-radius: var(--radius);
+}

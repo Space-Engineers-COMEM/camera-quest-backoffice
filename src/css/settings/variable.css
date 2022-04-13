@@ -2,8 +2,10 @@
  * VARIABLES
  ********************************/
 
-/* Colors
-  ********************************/
 :root {
+  // Colors
   --background-color: #ffffff;
+
+  // Radius
+  --radius: 0.5rem;
 }

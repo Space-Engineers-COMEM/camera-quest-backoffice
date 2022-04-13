@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
+import '../css/objects/modal.scss';
 
 type ModalProps = {
   children: any;
+  // title: string;
+  // description: string;
 };
 
 export default function Modal(props: ModalProps) {
@@ -17,11 +20,20 @@ export default function Modal(props: ModalProps) {
   };
 
   const content = () => (
-    <dialog open>
-      <button type="button" onClick={closeButton}>
-        Close
-      </button>
-      <div>{props.children}</div>
+    <dialog className="modal" open>
+      <div className="modal__container">
+        <header className="modal__header">
+          <hgroup>
+            <h1>Titre</h1>
+            <div>Description</div>
+          </hgroup>
+          <button type="button" onClick={closeButton}>
+            X
+          </button>
+        </header>
+
+        <main className="modal__content">{props.children}</main>
+      </div>
     </dialog>
   );
 
