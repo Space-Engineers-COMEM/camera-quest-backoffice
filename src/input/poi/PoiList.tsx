@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { PoiType } from '../../types/PoiType';
 import PoiCard from './PoiCard';
-import { PoiType } from '../../types/PoiType';
 
 const API_URL = process.env.REACT_APP_API_URL;
 

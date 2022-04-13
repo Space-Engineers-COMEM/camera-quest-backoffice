@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PoiType } from '../../types/PoiType';
 import Modal from '../../layout/Modal';
+import Error from '../../content/messages/Error';
+import Loading from '../../content/messages/Loading';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -26,18 +28,6 @@ export default function PoiDetail() {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(poi);
-  });
-
-  const displayError = () => {
-    <div>{error.message}</div>;
-  };
-
-  const displayLoading = () => {
-    <div>Loading...</div>;
-  };
-
   const displayContent = () => {
     <article className="poi">
       <div className="poi__container">{poi?.title}</div>
@@ -46,9 +36,9 @@ export default function PoiDetail() {
 
   const displayView = () => {
     if (error) {
-      return displayError();
+      return <Error>{error.message}</Error>;
     } else if (!isLoaded || !poi) {
-      return displayLoading();
+      return <Loading />;
     } else {
       return displayContent();
     }
