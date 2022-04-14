@@ -30,7 +30,7 @@ export default function PoiDetail() {
         setIsLoaded(true);
         setError(err);
       });
-  }, []);
+  });
 
   const getTags = (tags: any[]) => {
     const formattedTags: any[] = [];
