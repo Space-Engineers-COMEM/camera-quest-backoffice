@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FormInput } from '../../types/FormInput';
 
 type TagsType = {
@@ -51,7 +51,7 @@ export default function Tags(props: TagsType & FormInput) {
       <label htmlFor={props.id}>{props.label}</label>
       <input id={props.id} type="search" onKeyDown={handleKeyDown} />
       <ul className="tags">
-        {tags.map((tag, index) => (
+        {tags.map((tag) => (
           <li key={tag}>
             {tag}
             <button type="button" data-key={tag} onClick={handleButtonClick}>
