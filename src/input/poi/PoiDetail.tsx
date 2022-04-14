@@ -5,6 +5,9 @@ import { PoiDetail as PoiDetailType } from '../../types/PoiDetailType';
 import Modal from '../../layout/Modal';
 import Error from '../../content/messages/Error';
 import Loading from '../../content/messages/Loading';
+// import Form from '../../input/form/Form';
+import InputText from '../form/InputText';
+import InputTextarea from '../form/InputTextarea';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -40,20 +43,12 @@ export default function PoiDetail() {
               <label htmlFor="resource">Fichier audio</label>
               <input id="resource" type="file" />
             </div>
-            <div className="form__row">
-              <label htmlFor="subtitle">Sous-titres</label>
-              <textarea id="subtitle" value={data?.translations[0].value} />
-            </div>
+
+            <InputTextarea label="Sous-titres" id="subtitle" value={data?.translations[0].value} />
           </div>
           <div className="poi__rightColumn">
-            <div className="form__row">
-              <label htmlFor="name">Nom de l&#39;objet</label>
-              <input id="name" type="text" value={data?.poi.title} />
-            </div>
-            <div className="form__row">
-              <label htmlFor="azure_tag">Tag azure</label>
-              <input id="azure_tag" type="text" value={data?.poi.exhibition_number} />
-            </div>
+            <InputText label="Nom de l'objet" id="name" value={data?.poi.title} />
+            <InputText label="Tag azure" id="azure_tag" value={data?.poi.exhibition_number} />
             <div className="form__row">
               <label htmlFor="floor">Étage</label>
               <select id="floor" name="">
@@ -63,24 +58,12 @@ export default function PoiDetail() {
             </div>
             <div className="form__row">
               <label htmlFor="tags">Catégories</label>
-              {}
+              tags
             </div>
-            <div className="form__row">
-              <label htmlFor="location">Lieu</label>
-              <input id="location" type="text" value={data?.poi.location} />
-            </div>
-            <div className="form__row">
-              <label htmlFor="date">Date</label>
-              <input id="date" type="date" value={data?.poi.periode} />
-            </div>
-            <div className="form__row">
-              <label htmlFor="manufacturer">Constructeur</label>
-              <input id="manufacturer" type="text" value={data?.poi.manufacturer} />
-            </div>
-            <div className="form__row">
-              <label htmlFor="description">Texte</label>
-              <textarea id="description" value={data?.translations[1].value} />
-            </div>
+            <InputText label="Lieu" id="location" value={data?.poi.location} />
+            <InputText label="Date" id="date" value={data?.poi.periode} />
+            <InputText label="Constructeur" id="manufacturer" value={data?.poi.manufacturer} />
+            <InputTextarea label="Texte" id="description" value={data?.translations[1].value} />
           </div>
         </form>
       </div>
