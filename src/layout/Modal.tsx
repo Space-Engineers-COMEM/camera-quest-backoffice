@@ -5,8 +5,8 @@ import '../css/objects/modal.scss';
 
 type ModalProps = {
   children: any;
-  // title: string;
-  // description: string;
+  title: string;
+  description?: string;
 };
 
 export default function Modal(props: ModalProps) {
@@ -24,8 +24,8 @@ export default function Modal(props: ModalProps) {
       <div className="modal__container">
         <header className="modal__header">
           <hgroup>
-            <h1>Titre</h1>
-            <div>Description</div>
+            <h1>{props.title}</h1>
+            {props.description && <div>{props.description}</div>}
           </hgroup>
           <button type="button" onClick={closeButton}>
             X
