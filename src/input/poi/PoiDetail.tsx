@@ -8,6 +8,7 @@ import Loading from '../../content/messages/Loading';
 // import Form from '../../input/form/Form'; <- not sure to use this
 import InputText from '../form/InputText';
 import InputTextarea from '../form/InputTextarea';
+import Image from '../form/Image';
 import Tags from '../form/Tags';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -45,9 +46,7 @@ export default function PoiDetail() {
       <div className="poi__container">
         <form className="form" action="">
           <div className="poi__leftColumn">
-            <div className="form__row">
-              <img src={data?.poi.image_url} alt="" />
-            </div>
+            <Image url={data?.poi.image_url!} />
             <div className="form__row">
               <label htmlFor="resource">Fichier audio</label>
               <input id="resource" type="file" />
