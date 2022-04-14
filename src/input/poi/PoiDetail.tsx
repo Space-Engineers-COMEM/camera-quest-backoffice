@@ -5,9 +5,10 @@ import { PoiDetail as PoiDetailType } from '../../types/PoiDetailType';
 import Modal from '../../layout/Modal';
 import Error from '../../content/messages/Error';
 import Loading from '../../content/messages/Loading';
-// import Form from '../../input/form/Form';
+// import Form from '../../input/form/Form'; <- not sure to use this
 import InputText from '../form/InputText';
 import InputTextarea from '../form/InputTextarea';
+import Tags from '../form/Tags';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -30,6 +31,14 @@ export default function PoiDetail() {
         setError(err);
       });
   }, []);
+
+  const getTags = (tags: any[]) => {
+    const formattedTags: any[] = [];
+    tags.forEach((tag: { name: any }) => {
+      formattedTags.push(tag.name);
+    });
+    return formattedTags;
+  };
 
   const displayContent = () => (
     <article className="poi">
@@ -56,10 +65,7 @@ export default function PoiDetail() {
                 <option value="2">Étage 2</option>
               </select>
             </div>
-            <div className="form__row">
-              <label htmlFor="tags">Catégories</label>
-              tags
-            </div>
+            <Tags label="Catégories" id="tags" tags={getTags(data?.tags!) || []} />
             <InputText label="Lieu" id="location" value={data?.poi.location} />
             <InputText label="Date" id="date" value={data?.poi.periode} />
             <InputText label="Constructeur" id="manufacturer" value={data?.poi.manufacturer} />
