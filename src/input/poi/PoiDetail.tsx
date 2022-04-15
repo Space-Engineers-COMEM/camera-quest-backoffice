@@ -12,6 +12,7 @@ import ImageFile from '../form/ImageFile';
 import AudioFile from '../form/AudioFile';
 import Tags from '../form/Tags';
 import Select from '../form/Select';
+import { TagType } from '../../types/TagType';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -35,9 +36,9 @@ export default function PoiDetail() {
       });
   });
 
-  const getTags = (tags: any[]) => {
+  const getTags = (tags: Array<TagType> | undefined) => {
     const formattedTags: any[] = [];
-    tags.forEach((tag: { name: any }) => {
+    tags?.forEach((tag: { name: any }) => {
       formattedTags.push(tag.name);
     });
     return formattedTags;
@@ -48,8 +49,8 @@ export default function PoiDetail() {
       <div className="poi__container">
         <form className="form" action="">
           <div className="poi__leftColumn">
-            <ImageFile url={data?.poi.image_url!} />
-            <AudioFile label="Fichier audio" id="audio" url={data?.resources[0].url!} />
+            <ImageFile url={data?.poi.image_url} />
+            <AudioFile label="Fichier audio" id="audio" url={data?.resources[0].url} />
 
             <InputTextarea label="Sous-titres" id="subtitle" value={data?.translations[0].value} />
           </div>
@@ -62,7 +63,7 @@ export default function PoiDetail() {
               selected={data?.poi.area}
               options={['Bleu', 'Jaune', 'Vert']}
             />
-            <Tags label="Catégories" id="tags" tags={getTags(data?.tags!) || []} />
+            <Tags label="Catégories" id="tags" tags={getTags(data?.tags)} />
             <InputText label="Lieu" id="location" value={data?.poi.location} />
             <InputText label="Date" id="date" value={data?.poi.periode} />
             <InputText label="Constructeur" id="manufacturer" value={data?.poi.manufacturer} />

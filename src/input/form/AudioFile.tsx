@@ -2,7 +2,7 @@ import React, { SetStateAction, useEffect, useState } from 'react';
 import { FormInputType } from '../../types/FormInputType';
 
 type AudioFileType = {
-  url: string;
+  url: string | undefined;
 };
 
 export default function AudioFile(props: AudioFileType & FormInputType) {
