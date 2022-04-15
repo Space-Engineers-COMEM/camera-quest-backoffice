@@ -7,12 +7,10 @@ type AudioFileType = {
 
 export default function AudioFile(props: AudioFileType & FormInput) {
   const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState<string>(props.url);
 
   useEffect(() => {
     if (!selectedFile) return;
     const objectUrl: SetStateAction<any> = URL.createObjectURL(selectedFile);
-    setPreview(objectUrl);
 
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
@@ -28,7 +26,7 @@ export default function AudioFile(props: AudioFileType & FormInput) {
   const displayView = () => (
     <div className="form__row">
       <label htmlFor={props.id}>{props.label}</label>
-      <input id={props.id} type="file" accept="audio/*" />
+      <input id={props.id} type="file" accept="audio/*" onChange={onSelectFile} />
     </div>
   );
 
