@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FormInput } from '../../types/FormInput';
+import { FormInputType } from '../../types/FormInputType';
 
 type TagsType = {
   tags: any[];
 };
 
-export default function Tags(props: TagsType & FormInput) {
+export default function Tags(props: TagsType & FormInputType) {
   const [tags, setTags] = useState<string[]>(props.tags);
 
   /**

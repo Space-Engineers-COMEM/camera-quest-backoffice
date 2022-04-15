@@ -1,7 +1,7 @@
 import React from 'react';
-import { FormInput } from '../../types/FormInput';
+import { FormInputType } from '../../types/FormInputType';
 
-export default function InputText(props: FormInput) {
+export default function InputText(props: FormInputType) {
   const displayView = () => (
     <div className="form__row">
       <label htmlFor={props.id}>{props.label}</label>

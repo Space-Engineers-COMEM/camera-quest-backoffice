@@ -11,6 +11,7 @@ import InputTextarea from '../form/InputTextarea';
 import ImageFile from '../form/ImageFile';
 import AudioFile from '../form/AudioFile';
 import Tags from '../form/Tags';
+import Select from '../form/Select';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -55,13 +56,7 @@ export default function PoiDetail() {
           <div className="poi__rightColumn">
             <InputText label="Nom de l'objet" id="name" value={data?.poi.title} />
             <InputText label="Tag azure" id="azure_tag" value={data?.poi.exhibition_number} />
-            <div className="form__row">
-              <label htmlFor="floor">Étage</label>
-              <select id="floor" name="">
-                <option value="1">Étage 1</option>
-                <option value="2">Étage 2</option>
-              </select>
-            </div>
+            <Select />
             <Tags label="Catégories" id="tags" tags={getTags(data?.tags!) || []} />
             <InputText label="Lieu" id="location" value={data?.poi.location} />
             <InputText label="Date" id="date" value={data?.poi.periode} />
