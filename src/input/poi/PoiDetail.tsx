@@ -56,7 +56,12 @@ export default function PoiDetail() {
           <div className="poi__rightColumn">
             <InputText label="Nom de l'objet" id="name" value={data?.poi.title} />
             <InputText label="Tag azure" id="azure_tag" value={data?.poi.exhibition_number} />
-            <Select />
+            <Select
+              label="Étages"
+              id="floor"
+              selected={data?.poi.area}
+              options={['Bleu', 'Jaune', 'Vert']}
+            />
             <Tags label="Catégories" id="tags" tags={getTags(data?.tags!) || []} />
             <InputText label="Lieu" id="location" value={data?.poi.location} />
             <InputText label="Date" id="date" value={data?.poi.periode} />

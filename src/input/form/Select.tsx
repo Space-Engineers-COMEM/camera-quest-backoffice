@@ -1,13 +1,20 @@
 import React from 'react';
 import { FormInputType } from '../../types/FormInputType';
 
-export default function Select() {
+type SelectType = {
+  options: string[];
+  selected: number | undefined; // id of the selected option. If undefined, the first element of the "options" array is selected.
+};
+
+export default function Select(props: FormInputType & SelectType) {
+  /* Template */
   const displayContent = () => (
     <div className="form__row">
-      <label htmlFor="floor">Étage</label>
-      <select id="floor" name="">
-        <option value="1">Étage 1</option>
-        <option value="2">Étage 2</option>
+      <label htmlFor={props.id}>{props.label}</label>
+      <select value={props.selected || 0} id={props.id} name={props.id}>
+        {props.options.map((option, index) => (
+          <option value={index}>{option}</option>
+        ))}
       </select>
     </div>
   );
