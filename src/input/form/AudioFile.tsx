@@ -1,10 +1,11 @@
 import React, { SetStateAction, useEffect, useState } from 'react';
+import { FormInput } from '../../types/FormInput';
 
-type ImageType = {
+type AudioFileType = {
   url: string;
 };
 
-export default function Image(props: ImageType) {
+export default function AudioFile(props: AudioFileType & FormInput) {
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState<string>(props.url);
 
@@ -26,9 +27,8 @@ export default function Image(props: ImageType) {
 
   const displayView = () => (
     <div className="form__row">
-      {/* Message to the integrator: change the inline width of the image and define in the CSS rules !!! */}
-      <img width="200" src={preview} alt="" />
-      <input type="file" onChange={onSelectFile} />
+      <label htmlFor={props.id}>{props.label}</label>
+      <input id={props.id} type="file" accept="audio/*" />
     </div>
   );
 
