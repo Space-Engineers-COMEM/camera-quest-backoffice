@@ -32,7 +32,7 @@ export default function Tags(props: TagsType & FormInputType) {
     setTags((oldTags) => oldTags.filter((t) => t !== tag));
   };
 
-  /* Handle when user write something in input field */
+  /* Handle when user write something in input */
   const handleInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(event.target.value);

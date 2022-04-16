@@ -23,9 +23,7 @@ export default function Image(props: ImageType) {
    * When a file is uploaded, set it at the state.
    */
   const onSelectFile = (event: any) => {
-    if (!event.target.files || event.target.files.length === 0) {
-      return;
-    }
+    if (!event.target.files || event.target.files.length === 0) return;
     setSelectedFile(event.target.files[0]);
   };
 
