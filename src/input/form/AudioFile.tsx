@@ -12,7 +12,7 @@ export default function AudioFile(props: AudioFileType & FormInputType) {
     if (!selectedFile) return;
     const objectUrl: SetStateAction<any> = URL.createObjectURL(selectedFile);
 
-    // free memory when ever this component is unmounted
+    // Free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 

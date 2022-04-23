@@ -44,6 +44,7 @@ export default function Tags(props: TagsType & FormInputType) {
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (event.key === 'Enter') {
+        event.preventDefault(); // avoid submitting the form
         addTag(event.currentTarget.value);
         setInputValue(''); // clear the input field
       }
