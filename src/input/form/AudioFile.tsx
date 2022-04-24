@@ -1,11 +1,7 @@
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { FormInputType } from '../../types/FormInputType';
 
-type AudioFileType = {
-  url: string | undefined;
-};
-
-export default function AudioFile(props: AudioFileType & FormInputType) {
+export default function AudioFile(props: FormInputType) {
   const [selectedFile, setSelectedFile] = useState();
 
   useEffect(() => {

@@ -1,7 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { PoiDetail as PoiDetailType } from '../../types/PoiDetailType';
+import { PoiType } from '../../types/PoiType';
+import { TagType } from '../../types/TagType';
+import { ResourceType } from '../../types/ResourceType';
+import { TranslationType } from '../../types/TranslationType';
+
 import Modal from '../../layout/Modal';
 import Error from '../../content/messages/Error';
 import Loading from '../../content/messages/Loading';
@@ -13,14 +17,18 @@ import AudioFile from '../form/AudioFile';
 import Tags from '../form/Tags';
 import Select from '../form/Select';
 import Submit from '../form/Submit';
-import { TagType } from '../../types/TagType';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 export default function PoiDetail() {
   const { id } = useParams<'id'>();
-  const [data, setData] = useState<PoiDetailType>();
-  const [val, setVal] = useState<any>();
+
+  const [poi, setPoi] = useState<PoiType>();
+  const [tags, setTags] = useState<Array<TagType>>();
+  const [resources, setResources] = useState<ResourceType>();
+  const [translations, setTranslations] = useState<TranslationType>();
+  const [lang, setLang] = useState<number>(0); // 0 = fr
+
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -30,8 +38,10 @@ export default function PoiDetail() {
       .get(`${API_URL}/pois/${id}/1`)
       .then((res: any) => {
         setIsLoaded(true);
-        setData(res.data.content);
-        setVal(res.data.content);
+        setPoi(res.data.content.poi);
+        setTags(res.data.content.tags);
+        setResources(res.data.content.resources);
+        setTranslations(res.data.content.translations);
       })
       .catch((err) => {
         setIsLoaded(true);
@@ -41,12 +51,12 @@ export default function PoiDetail() {
 
   /**
    * Get tags and format them for the <Tags> component
-   * @param {Array<TagType> | undefined} tags - Array<TagType> | undefined
+   * @param {Array<TagType> | undefined} newTags - Array<TagType> | undefined
    * @returns The tags, as an array of strings
    */
-  const getTags = (tags: Array<TagType> | undefined) => {
+  const getTags = (newTags: Array<TagType> | undefined) => {
     const formattedTags: any[] = [];
-    tags?.forEach((tag: { name: any }) => {
+    newTags?.forEach((tag: { name: any }) => {
       formattedTags.push(tag.name);
     });
     return formattedTags;
@@ -56,36 +66,52 @@ export default function PoiDetail() {
   const displayContent = () => (
     <article className="poi">
       <div className="poi__container">
-        <Form data={val}>
+        <Form data={poi}>
           <div className="poi__leftColumn">
-            <ImageFile url={data?.poi.image_url} />
-            <AudioFile label="Fichier audio" id="audio" url={data?.resources[0].url} />
+            <ImageFile url={poi?.image_url} />
+            <AudioFile label="Fichier audio" id="audio" />
 
-            <InputTextarea label="Sous-titres" id="subtitle" value={data?.translations[0].value} />
+            <InputTextarea label="Sous-titres" id="subtitle" value="" />
           </div>
           <div className="poi__rightColumn">
             <InputText
               label="Nom de l'objet"
               id="name"
-              type="poi"
-              objectkey="title"
-              value={data?.poi.title}
-              onChange={(newVal: string) =>
-                setVal({ ...data, poi: { ...data?.poi, title: newVal } })
-              }
+              value={poi?.title}
+              onChange={(newVal: string) => setPoi({ ...poi!, title: newVal })}
             />
-            <InputText label="Tag azure" id="azure_tag" value={data?.poi.exhibition_number} />
+            <InputText
+              label="Tag azure"
+              id="azure_tag"
+              value={poi?.exhibition_number}
+              onChange={(newVal: number) => setPoi({ ...poi!, exhibition_number: newVal })}
+            />
             <Select
               label="Étages"
               id="floor"
-              selected={data?.poi.area}
+              selected={poi?.area}
               options={['Bleu', 'Jaune', 'Vert']}
             />
-            <Tags label="Catégories" id="tags" tags={getTags(data?.tags)} />
-            <InputText label="Lieu" id="location" value={data?.poi.location} />
-            <InputText label="Date" id="date" value={data?.poi.periode} />
-            <InputText label="Constructeur" id="manufacturer" value={data?.poi.manufacturer} />
-            <InputTextarea label="Texte" id="description" value={data?.translations[1].value} />
+            <Tags label="Catégories" id="tags" tags={getTags(tags)} />
+            <InputText
+              label="Lieu"
+              id="location"
+              value={poi?.location}
+              onChange={(newVal: string) => setPoi({ ...poi!, location: newVal })}
+            />
+            <InputText
+              label="Date"
+              id="date"
+              value={poi?.periode}
+              onChange={(newVal: string) => setPoi({ ...poi!, periode: newVal })}
+            />
+            <InputText
+              label="Constructeur"
+              id="manufacturer"
+              value={poi?.manufacturer}
+              onChange={(newVal: string) => setPoi({ ...poi!, manufacturer: newVal })}
+            />
+            <InputTextarea label="Texte" id="description" value="" />
           </div>
           <Submit title="Sauvegarder" />
         </Form>
@@ -97,12 +123,12 @@ export default function PoiDetail() {
   const displayView = () => {
     if (error) {
       return <Error>{error.message}</Error>;
-    } else if (!isLoaded || !data) {
+    } else if (!isLoaded || !poi) {
       return <Loading />;
     } else {
       return displayContent();
     }
   };
 
-  return <Modal title={data?.poi.title || 'Nouvel objet'}>{displayView()}</Modal>;
+  return <Modal title={poi?.title || '(Objet sans nom)'}>{displayView()}</Modal>;
 }
