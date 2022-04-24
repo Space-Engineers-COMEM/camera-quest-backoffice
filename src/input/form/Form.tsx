@@ -10,16 +10,14 @@ export default function Form(props: any) {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log(props.data);
-
-    // axios
-    //   .patch(`${API_URL}/pois/${id}`, props.data)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios
+      .patch(`${API_URL}/pois/${id}`, props.data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   /* Template */
