@@ -16,6 +16,7 @@ import ImageFile from '../form/ImageFile';
 import AudioFile from '../form/AudioFile';
 import Tags from '../form/Tags';
 import Select from '../form/Select';
+import Checkbox from '../form/Checkbox';
 import Submit from '../form/Submit';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -27,7 +28,7 @@ export default function PoiDetail() {
   const [tags, setTags] = useState<Array<TagType>>();
   const [resources, setResources] = useState<ResourceType>();
   const [translations, setTranslations] = useState<TranslationType>();
-  const [lang, setLang] = useState<number>(0); // 0 = fr
+  // const [lang, setLang] = useState<number>();
 
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -113,6 +114,12 @@ export default function PoiDetail() {
             />
             <InputTextarea label="Texte" id="description" value="" />
           </div>
+          <Checkbox
+            id="archive"
+            label="Archiver"
+            value={poi?.archived}
+            onChange={(newVal: boolean) => setPoi({ ...poi!, archived: newVal })}
+          />
           <Submit title="Sauvegarder" />
         </Form>
       </div>
