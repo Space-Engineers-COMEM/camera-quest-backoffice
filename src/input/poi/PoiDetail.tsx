@@ -67,7 +67,7 @@ export default function PoiDetail() {
   const displayContent = () => (
     <article className="poi">
       <div className="poi__container">
-        <Form data={poi}>
+        <Form path="pois" data={[{ data: { ...poi }, path: 'pois' }]}>
           <div className="poi__leftColumn">
             <ImageFile url={poi?.image_url} />
             <AudioFile label="Fichier audio" id="audio" />
@@ -130,7 +130,7 @@ export default function PoiDetail() {
   const displayView = () => {
     if (error) {
       return <Error>{error.message}</Error>;
-    } else if (!isLoaded || !poi) {
+    } else if (!isLoaded) {
       return <Loading />;
     } else {
       return displayContent();

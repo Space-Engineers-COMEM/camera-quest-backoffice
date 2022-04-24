@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div>
       <h1>Que souhaitez-vous faire ?</h1>
-      <HomeCard title="Un objet" route="/objets">
+      <HomeCard title="Un objet" route="/objects">
         Modifier ou créer un objet qui sera présenté dans la collection du musée et ajouté à un
         étage pour être présent dans l’application.
       </HomeCard>

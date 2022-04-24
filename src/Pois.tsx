@@ -2,6 +2,7 @@
 import React from 'react';
 import PoisList from './input/poi/PoiList';
 import PoisFilter from './input/poi/PoiFilter';
+import PoiAdder from './input/poi/PoiAdder';
 
 /**
  * Renders POIs components
@@ -12,6 +13,7 @@ export default function Pois() {
     <div>
       <PoisFilter />
       <PoisList />
+      <PoiAdder />
     </div>
   );
 }
