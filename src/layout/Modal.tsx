@@ -11,9 +11,7 @@ type ModalProps = {
 
 export default function Modal(props: ModalProps) {
   const navigator = useNavigate();
-  // const domNode = document.createElement('dialog');
   const domContainer = document.getElementById('modal_root')!;
-  // Note: the ! sign say to Typescript that this variable is never null
 
   const closeButton = () => {
     navigator(-1);

@@ -20,6 +20,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 export default function PoiDetail() {
   const { id } = useParams<'id'>();
   const [data, setData] = useState<PoiDetailType>();
+  const [val, setVal] = useState<any>();
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -30,12 +31,13 @@ export default function PoiDetail() {
       .then((res: any) => {
         setIsLoaded(true);
         setData(res.data.content);
+        setVal(res.data.content);
       })
       .catch((err) => {
         setIsLoaded(true);
         setError(err);
       });
-  });
+  }, []);
 
   /**
    * Get tags and format them for the <Tags> component
@@ -54,7 +56,7 @@ export default function PoiDetail() {
   const displayContent = () => (
     <article className="poi">
       <div className="poi__container">
-        <Form>
+        <Form data={val}>
           <div className="poi__leftColumn">
             <ImageFile url={data?.poi.image_url} />
             <AudioFile label="Fichier audio" id="audio" url={data?.resources[0].url} />
@@ -62,7 +64,16 @@ export default function PoiDetail() {
             <InputTextarea label="Sous-titres" id="subtitle" value={data?.translations[0].value} />
           </div>
           <div className="poi__rightColumn">
-            <InputText label="Nom de l'objet" id="name" value={data?.poi.title} />
+            <InputText
+              label="Nom de l'objet"
+              id="name"
+              type="poi"
+              objectkey="title"
+              value={data?.poi.title}
+              onChange={(newVal: string) =>
+                setVal({ ...data, poi: { ...data?.poi, title: newVal } })
+              }
+            />
             <InputText label="Tag azure" id="azure_tag" value={data?.poi.exhibition_number} />
             <Select
               label="Étages"
@@ -82,6 +93,7 @@ export default function PoiDetail() {
     </article>
   );
 
+  /* Template */
   const displayView = () => {
     if (error) {
       return <Error>{error.message}</Error>;
@@ -92,5 +104,5 @@ export default function PoiDetail() {
     }
   };
 
-  return <Modal title={data?.poi.title || ''}>{displayView()}</Modal>;
+  return <Modal title={data?.poi.title || 'Nouvel objet'}>{displayView()}</Modal>;
 }
