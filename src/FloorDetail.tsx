@@ -31,14 +31,15 @@ export default function FloorDetail() {
   };
   return (
     <>
-      {/* <h1>{fullFloorName}</h1> */}
       <Link className="return__link" to="/etages">
         Retour
       </Link>
+      <h1>Modifier : {floors[idEtage - 1].name}</h1>
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="floorNameText">
-          <h1>Nom de l&apos;étage</h1>
+          Nom
+          <br />
           <input
             type="text"
             value={floorNameText}

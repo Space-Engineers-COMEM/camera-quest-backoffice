@@ -31,17 +31,20 @@ export default function App() {
 
   return (
     <div className="App">
-      <Routes location={state?.backgroundLocation || location}>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/objets" element={<Pois />} />
-        <Route path="/objets/:id" element={<PoiDetail />} />
-        <Route path="/*" element={<Error404 />} />
-        {/* <Route path="/:id" element={<POI />} /> */}
-        {/* <Route path="/language" element={<Language />} /> */}
-        {/* <Route path="/congrat" element={<Congrat />} /> */}
-      </Routes>
-
+      <div className="container">
+        <Routes location={state?.backgroundLocation || location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/objets" element={<Pois />} />
+          <Route path="/objets/:id" element={<PoiDetail />} />
+          <Route path="/etages" element={<Floors />} />
+          <Route path="/etages/:id" element={<FloorDetail />} />
+          <Route path="/*" element={<Error404 />} />
+          {/* <Route path="/:id" element={<POI />} /> */}
+          {/* <Route path="/language" element={<Language />} /> */}
+          {/* <Route path="/congrat" element={<Congrat />} /> */}
+        </Routes>
+      </div>
       {state?.backgroundLocation && (
         <Routes>
           <Route path="/objets/:id" element={<PoiDetail />} />
@@ -49,7 +52,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/objets" element={<Pois />} />
           <Route path="/etages" element={<Floors />} />
-          <Route path="/etage/:id" element={<FloorDetail />} />
+          <Route path="/etages/:id" element={<FloorDetail />} />
           <Route path="/*" element={<Error404 />} />
           {/* <Route path="/:id" element={<POI />} /> */}
           {/* <Route path="/language" element={<Language />} /> */}

@@ -10,8 +10,12 @@ type FloorProps = {
 export default function Floor(props: FloorProps) {
   return (
     <div>
-      <h2>{props.name}</h2>
-      <a href={`etage/${props.id}`}>Modifier</a>
+      <h1 className="mt-0 mb-4">{props.name}</h1>
+      <Link to={`./${props.id}`}>
+        <button type="button" className="button w-100 primary">
+          Modifier
+        </button>{' '}
+      </Link>
       {/* <Link to={`${props.id}`} key={props.id}>
         Modifier
       </Link> */}

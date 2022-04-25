@@ -1,0 +1,17 @@
+.button,
+.btn {
+  padding: 15px 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 15px;
+  box-shadow: 2.80529e-16px 0.818104px 8.18104px rgba(0, 0, 0, 0.05), inset -7.41843e-17px -1.21152px 2.0289px rgba(0, 0, 0, 0.06), inset 7.41843e-17px 1.21152px 1.21152px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.button.primary {
+  background-color: var(--primary-color);
+}

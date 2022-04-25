@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
  */
 type HomeProps = {
   title: string;
+  buttonText: string;
   route: string;
   children: string;
 };
@@ -21,12 +22,18 @@ type HomeProps = {
 
 function HomeCard(props: HomeProps) {
   return (
-    <div className="card">
-      <h2 className="card__title">{props.title}</h2>
-      <p>{props.children}</p>
-      <Link to={props.route} className="button">
-        Éditer
-      </Link>
+    <div className="col-8 mx-auto">
+      <div className="card p-4 my-4">
+        <h2 className="card__title">{props.title}</h2>
+        <p>{props.children}</p>
+        <div className="text-right">
+          <Link to={props.route}>
+            <button type="button" className="button primary">
+              Éditer {props.buttonText} &gt;
+            </button>{' '}
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
@@ -38,12 +45,12 @@ function HomeCard(props: HomeProps) {
 export default function Home() {
   return (
     <div>
-      <h1>Que souhaitez-vous faire ?</h1>
-      <HomeCard title="Un objet" route="/objets">
+      <h1 className="text-center mb-5">Que souhaitez-vous éditer ?</h1>
+      <HomeCard title="Un objet" buttonText="les objets" route="/objets">
         Modifier ou créer un objet qui sera présenté dans la collection du musée et ajouté à un
         étage pour être présent dans l’application.
       </HomeCard>
-      <HomeCard title="Un étage" route="#">
+      <HomeCard title="Un étage" buttonText="les etages" route="/etages">
         Modifier ou créer un étage qui sera présent dans l’application. Possibilité de renommer et
         de ré-ordonner les étages.
       </HomeCard>
