@@ -6,7 +6,7 @@ type ImageType = {
 
 export default function Image(props: ImageType) {
   const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState<string>(props.url || '/img/defaultPoi.jpg');
+  const [preview, setPreview] = useState<string>(props.url || '/img/defaultPoi.png');
 
   useEffect(() => {
     if (!selectedFile) return;
