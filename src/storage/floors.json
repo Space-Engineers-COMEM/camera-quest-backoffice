@@ -8,16 +8,16 @@
     "name": "Étage bleu"
   },
   {
+    "id": 3,
+    "name": "Étage rouge"
+  },
+  {
     "id": 4,
     "name": "Étage gris"
   },
   {
     "id": 5,
     "name": "Exposition temporaire"
-  },
-  {
-    "id": 3,
-    "name": "Étage rouge"
   },
   {
     "id": 6,

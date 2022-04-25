@@ -1,50 +1,56 @@
-import React, { useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+// import * as fs from 'fs';
 import floors from './storage/floors.json';
 
 export default function FloorDetail() {
-  // React.useEffect(() => {
-  //   console.log('params', idEtage);
-  // }, [idEtage]);
-  // const { idEtage } = this.props.match.params;
-
   const idEtage = Number(useParams().id);
-  // const floors = [
-  //   {
-  //     id: 1,
-  //     name: '1. Étage jaune',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: '2. Étage bleu',
-  //   },
-  //   {
-  //     id: 3,
-  //     name: '3. Étage rouge',
-  //   },
-  //   {
-  //     id: 4,
-  //     name: '4. Étage gris',
-  //   },
-  //   {
-  //     id: 5,
-  //     name: '5. Exposition temporaire',
-  //   },
-  //   {
-  //     id: 6,
-  //     name: '6. Histoire projection',
-  //   },
-  // ];
-  console.log(idEtage);
-  console.log(floors.length);
-  console.log(idEtage < 1 || idEtage > floors.length);
-  React.useEffect(() => {
-    if (idEtage < 1 || idEtage > floors.length) {
-      console.log('redirecting..');
-      const navigate = useNavigate();
-      navigate('../../');
-    }
-  });
 
-  return <h1>{`${idEtage}. ${floors[idEtage - 1].name}`}</h1>;
+  // console.log(idEtage);
+  // console.log(floors.length);
+  // console.log(idEtage < 1 || idEtage > floors.length);
+  // React.useEffect(() => {
+  //   if (idEtage < 1 || idEtage > floors.length) {
+  //     console.log('redirecting..');
+  //     const navigate = useNavigate();
+  //     navigate('../../');
+  //   }
+  // });
+
+  let fullFloorName;
+  const [floorNameText, setValue] = useState(floors[idEtage - 1].name);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    // fullFloorName = `${idEtage}. ${floorNameText}`;
+    floors[idEtage - 1].name = floorNameText;
+    console.log(floors);
+    // fs.writeFile('./myFile.json', JSON.stringify(floors), (err) => {
+    //   if (err) console.log('Error writing file:', err);
+    // });
+  };
+  return (
+    <>
+      {/* <h1>{fullFloorName}</h1> */}
+      <Link className="return__link" to="/etages">
+        Retour
+      </Link>
+
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="floorNameText">
+          <h1>Nom de l&apos;étage</h1>
+          <input
+            type="text"
+            value={floorNameText}
+            onChange={(e) => setValue(e.target.value)}
+            name="floorNameText"
+            id="floorNameText"
+            required
+          />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+      {floorNameText}
+    </>
+  );
 }
