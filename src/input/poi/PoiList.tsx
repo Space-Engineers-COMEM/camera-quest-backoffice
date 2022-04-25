@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PoiDetail from './PoiCard';
+import PoiCard from './PoiCard';
+import { PoiType } from '../../types/PoiType';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -9,14 +10,14 @@ const API_URL = process.env.REACT_APP_API_URL;
  * @returns A list of POIs
  */
 export default function PoisList() {
-  const [pois, setPois] = useState<any[]>([]);
+  const [pois, setPois] = useState<PoiType[]>([]);
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Fetch POIs
   useEffect(() => {
     axios
-      .get(`${API_URL}/pois/previews`)
+      .get(`${API_URL}/pois`)
       .then((res: any) => {
         setIsLoaded(true);
         setPois(res.data);
@@ -36,11 +37,11 @@ export default function PoisList() {
     return (
       <ul>
         {pois.map((poi) => (
-          <PoiDetail
+          <PoiCard
             key={poi.id}
             id={poi.id}
             title={poi.title}
-            imagePath={poi.imagePath}
+            imageUrl={poi.image_url}
             area={poi.area}
           />
         ))}

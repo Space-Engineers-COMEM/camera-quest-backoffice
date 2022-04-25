@@ -1,6 +1,6 @@
-# Camera Quest Backoffice
+# Camera Quest App
 
-Administration backoffice for the Camera Quest project, based on ReactJS
+Webapp for the Camera Quest project based on ReactJS
 
 ## Getting started
 
@@ -17,6 +17,36 @@ If you contribute to this project, please follow those guidelines.
 
 We use [ESLint](https://eslint.org/), [Prettier](https://prettier.io/) and [EditorConfig](https://editorconfig.org) to enforce a consistent coding style. Have a look at the corresponding extensions for your editor. Check the config files for more information.
 
+### Methodology
+
+**CSS: BEM**
+
+The CSS class naming is inspired by [BEM](https://bem.info/). It stands for "Block Element Modifier":
+
+- Block is the main container, like a card
+- Elements are items in the block; like title, button, …
+- Modifier are variations; like states, alternative colors, …
+
+_Example_
+
+```css
+.poiCard { … }
+.poiCard__title { …}
+.poiCard__button--secondary { … }
+```
+
+**CSS: ITCSS**
+
+The folder structure is inspired by [ITCSS](https://developer.helpscout.com/seed/glossary/itcss/). We organise folders like so:
+
+- Settings: variables, mixins, libraries
+- Elements: generic rules, raw html elements: `h1`, `button`, …
+- Objects: layout, grid, structure
+- Components: UI specific rules, like cards, buttons
+- Trumps: helpers, temporary rules. Avoid as possible
+
+_Note: Settings and Elements are loaded by default from the `index.css`, it's available in all the application. Import what you need in your JSX components._
+
 ### Git workflow
 
 **Commit**
@@ -32,7 +62,7 @@ If you want to work on something new, follow this workflow. Keep the `main` bran
 If you want to work on an issue, please check the **issue workflow** below.
 
 1. **Create a new branch** and follow the naming convention: `<type>/<name>`.<br>
-   The "type" can be one of the following: <br>`feat`, `fix`, `test`, `docs`.
+   The "type" can be one of the following: <br>`feat`, `style`, `fix`, `test`, `docs`.
 2. **Add your changes** to the branch.<br>
    If you want, you can also pull your branch to the remote repository or change branches to work on something else if: just make sure your work is committed or stashed.
 3. When you're done, **switch to the `main` branch and pull** the new changes.
@@ -60,14 +90,24 @@ In all case, make sure to close the issue when you fix it.
 
 # About
 
+## Side documentation
+
+[Locales and languages](./src/locales/README.md)
+
 ## Contributors
 
-<a href="https://github.com/space-engineers-comem/camera-quest-backoffice/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=space-engineers-comem/camera-quest-backoffice"/>
+<a href="https://github.com/space-engineers-comem/camera-quest-app/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=space-engineers-comem/camera-quest-app"/>
 </a>
 
 ## License
 
-[MIT license](LICENSE).
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](LICENSE).
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
 Copyright (c) 2022-present, Space Engineers COMEM
