@@ -46,10 +46,9 @@ export default function Form(props: FormType) {
    */
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    // Each object send a request to the specified path
     props.data.map((item: { data: object; path: string }) => {
       if (id !== 'create') return patch(item.data, item.path);
-      console.log(item.data, item.path);
-
       return post(item.data, item.path);
     });
   };

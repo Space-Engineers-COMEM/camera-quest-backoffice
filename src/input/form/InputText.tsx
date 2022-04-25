@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormInputType } from '../../types/FormInputType';
 
 export default function InputText({ onChange, ...props }: FormInputType) {
