@@ -1,22 +1,23 @@
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { FormInputType } from '../../types/FormInputType';
 
-export default function AudioFile(props: FormInputType) {
-  const [selectedFile, setSelectedFile] = useState();
+export default function AudioFile({ onChange, ...props }: FormInputType) {
+  // const [selectedFile, setSelectedFile] = useState();
 
-  useEffect(() => {
-    if (!selectedFile) return;
-    const objectUrl: SetStateAction<any> = URL.createObjectURL(selectedFile);
+  // useEffect(() => {
+  //   if (!selectedFile) return;
+  //   const objectUrl: SetStateAction<any> = URL.createObjectURL(selectedFile);
 
-    // Free memory when ever this component is unmounted
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
+  //   // Free memory when ever this component is unmounted
+  //   return () => URL.revokeObjectURL(objectUrl);
+  // }, [selectedFile]);
 
   const onSelectFile = (event: any) => {
     if (!event.target.files || event.target.files.length === 0) {
       return;
     }
-    setSelectedFile(event.target.files[0]);
+    // setSelectedFile(event.target.files[0]);
+    onChange!(event.target.files[0]);
   };
 
   const displayView = () => (

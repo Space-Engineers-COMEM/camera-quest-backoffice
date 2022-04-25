@@ -14,44 +14,27 @@ type FormType = {
 export default function Form(props: FormType) {
   const { id } = useParams<'id'>();
 
-  // POST request
-  const post = (data: object, path: string) => {
-    axios({
-      method: 'post',
-      url: `${API_URL}/${path}`,
-      data,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  const request = (data: any, path: string, method: any) => {
+    const url = `${API_URL}/${path}/${method !== 'post' ? id : ''}`;
+    let headers = { 'Content-Type': 'application/json' };
 
-  // PATCH request
-  const patch = (data: object, path: string) => {
-    axios({
-      method: 'patch',
-      url: `${API_URL}/${path}/${id}`,
-      data,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    // Adapt request if file type is audio or image
+    if (data.type) {
+      let type = 'image';
+      console.log(data.type);
+      if (data.type === 'audio/mpeg') type = 'audio';
+      const formData = new FormData();
+      formData.append(type, data);
+      data = formData;
+      headers = { 'Content-Type': 'multipart/form-data' };
+    }
 
-  const sendFile = (file: any, path: string) => {
-    const formData = new FormData();
-    formData.append('image', file);
+    // Request
     axios({
-      method: 'patch',
-      url: `${API_URL}/${path}/${id}`,
-      data: formData,
-      headers: { 'Content-Type': 'multipart/form-data' },
+      method,
+      url,
+      data,
+      headers,
     })
       .then((res) => {
         console.log(res);
@@ -71,10 +54,9 @@ export default function Form(props: FormType) {
     event.preventDefault();
     // Each object send a request to the specified path
     props.data.map((item: { data: any; path: string }) => {
-      if (item.data.image) return sendFile(item.data.image, item.path);
-
-      if (id !== 'create') return patch(item.data, item.path);
-      return post(item.data, item.path);
+      const method = id === 'create' ? 'post' : 'patch';
+      if (!item.data) return;
+      return request(item.data, item.path, method);
     });
   };
 
