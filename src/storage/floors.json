@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Étage jaune"
+  },
+  {
+    "id": 2,
+    "name": "Étage bleu"
+  },
+  {
+    "id": 4,
+    "name": "Étage gris"
+  },
+  {
+    "id": 5,
+    "name": "Exposition temporaire"
+  },
+  {
+    "id": 3,
+    "name": "Étage rouge"
+  },
+  {
+    "id": 6,
+    "name": "Histoire projection"
+  }
+]

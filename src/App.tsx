@@ -4,6 +4,8 @@ import Error404 from './Error404';
 import Login from './Login';
 import Home from './Home';
 import Pois from './Pois';
+import Floors from './Floors';
+import FloorDetail from './FloorDetail';
 
 interface Props {}
 
@@ -27,6 +29,8 @@ export default class App extends React.Component<Props, States> {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/objets" element={<Pois />} />
+          <Route path="/etages" element={<Floors />} />
+          <Route path="/etage/:id" element={<FloorDetail />} />
           <Route path="/*" element={<Error404 />} />
           {/* <Route path="/:id" element={<POI />} /> */}
           {/* <Route path="/language" element={<Language />} /> */}
