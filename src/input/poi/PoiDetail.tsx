@@ -92,6 +92,7 @@ export default function PoiDetail() {
               id="floor"
               selected={poi?.area}
               options={['Bleu', 'Jaune', 'Vert']}
+              onChange={(newVal: number) => setPoi({ ...poi!, area: newVal })}
             />
             <Tags label="Catégories" id="tags" tags={getTags(tags)} />
             <InputText

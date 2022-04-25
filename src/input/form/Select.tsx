@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormInputType } from '../../types/FormInputType';
 
 type SelectType = {
@@ -6,14 +6,25 @@ type SelectType = {
   selected?: number; // Index of the selected option. Optional prop, but should be defined ideally. If undefined, the first element of the "options" array is selected.
 };
 
-export default function Select(props: FormInputType & SelectType) {
+export default function Select({ onChange, ...props }: FormInputType & SelectType) {
+  useEffect(() => {
+    // Select first element by default
+    if (props.selected === undefined) {
+      onChange!(0);
+    }
+  });
+
+  const handleChange = (event: any) => {
+    onChange!(event.target.value);
+  };
+
   /* Template */
   const displayContent = () => (
     <div className="form__row">
       <label htmlFor={props.id}>{props.label}</label>
-      <select defaultValue={props.selected || 0} id={props.id} name={props.id}>
+      <select defaultValue={props.selected} id={props.id} name={props.id} onChange={handleChange}>
         {props.options.map((option, index) => (
-          <option key={option} defaultValue={index}>
+          <option key={option} value={index}>
             {option}
           </option>
         ))}
