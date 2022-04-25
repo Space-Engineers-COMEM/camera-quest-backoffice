@@ -33,7 +33,8 @@ export default function PoiCard(props: PoiProps) {
         Supprimer
       </button>
       <br />
-      <img alt="" src={props.imageUrl} />
+      {/* Change the inline rule width in CSS */}
+      <img width="300" alt="" src={props.imageUrl} />
       <div>{props.title}</div>
       <div>Étage {props.area}</div>
       <PoiTags poiId={props.id} langId={1} />

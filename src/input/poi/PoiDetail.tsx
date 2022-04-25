@@ -69,7 +69,10 @@ export default function PoiDetail() {
       <div className="poi__container">
         <Form path="pois" data={[{ data: { ...poi }, path: 'pois' }]}>
           <div className="poi__leftColumn">
-            <ImageFile url={poi?.image_url} />
+            <ImageFile
+              url={poi?.image_url}
+              onChange={(newVal: any) => setPoi({ ...poi!, image: newVal })}
+            />
             <AudioFile label="Fichier audio" id="audio" />
 
             <InputTextarea label="Sous-titres" id="subtitle" value="" />

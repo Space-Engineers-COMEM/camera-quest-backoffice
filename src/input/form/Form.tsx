@@ -16,8 +16,11 @@ export default function Form(props: FormType) {
 
   // POST request
   const post = (data: object, path: string) => {
-    axios
-      .post(`${API_URL}/${path}`, data)
+    axios({
+      method: 'post',
+      url: `${API_URL}/${path}`,
+      data,
+    })
       .then((res) => {
         console.log(res);
       })
@@ -28,8 +31,28 @@ export default function Form(props: FormType) {
 
   // PATCH request
   const patch = (data: object, path: string) => {
-    axios
-      .patch(`${API_URL}/${path}/${id}`, data)
+    axios({
+      method: 'patch',
+      url: `${API_URL}/${path}/${id}`,
+      data,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const sendFile = (file: any, path: string) => {
+    const formData = new FormData();
+    formData.append('image', file);
+    axios({
+      method: 'patch',
+      url: `${API_URL}/${path}/${id}`,
+      data: formData,
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
       .then((res) => {
         console.log(res);
       })
@@ -47,7 +70,9 @@ export default function Form(props: FormType) {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     // Each object send a request to the specified path
-    props.data.map((item: { data: object; path: string }) => {
+    props.data.map((item: { data: any; path: string }) => {
+      if (item.data.image) return sendFile(item.data.image, item.path);
+
       if (id !== 'create') return patch(item.data, item.path);
       return post(item.data, item.path);
     });

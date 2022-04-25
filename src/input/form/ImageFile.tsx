@@ -1,11 +1,12 @@
 import React, { SetStateAction, useEffect, useState } from 'react';
 
 type ImageType = {
+  onChange: Function;
   url: string | undefined;
 };
 
-export default function Image(props: ImageType) {
-  const [selectedFile, setSelectedFile] = useState();
+export default function Image({ onChange, ...props }: ImageType) {
+  const [selectedFile, setSelectedFile] = useState<any>(null);
   const [preview, setPreview] = useState<string>(props.url || '/img/defaultPoi.png');
 
   useEffect(() => {
@@ -19,14 +20,14 @@ export default function Image(props: ImageType) {
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
-  /**
-   * When a file is uploaded, set it at the state.
-   */
+  // When a file is uploaded, set it at the state.
   const onSelectFile = (event: any) => {
     if (!event.target.files || event.target.files.length === 0) return;
     setSelectedFile(event.target.files[0]);
+    onChange!(event.target.files[0]);
   };
 
+  // Template
   const displayView = () => (
     <div className="form__row">
       {/*
