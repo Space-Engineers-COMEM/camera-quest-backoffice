@@ -25,8 +25,8 @@ export default function Modal(props: ModalProps) {
             <h1>{props.title}</h1>
             {props.description && <div>{props.description}</div>}
           </hgroup>
-          <button type="button" onClick={closeButton}>
-            X
+          <button type="button" className="button button__close" onClick={closeButton}>
+            <i className="fa-solid fa-xmark" />
           </button>
         </header>
 

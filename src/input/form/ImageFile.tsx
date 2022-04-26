@@ -29,12 +29,15 @@ export default function Image({ onChange, ...props }: ImageType) {
 
   // Template
   const displayView = () => (
-    <div className="form__row">
+    <div className="form__input form__input--image">
       {/*
       Message to the integrator: change the inline width of the image and define in the CSS rules !!!
       */}
-      <img width="200" src={preview} alt="" />
-      <input type="file" accept="image/*" onChange={onSelectFile} />
+      <img src={preview} alt="" />
+      <label htmlFor="img">
+        <i className="fa-solid fa-pen" />
+      </label>
+      <input id="img" type="file" accept="image/*" onChange={onSelectFile} />
     </div>
   );
 

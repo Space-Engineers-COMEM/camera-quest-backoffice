@@ -78,63 +78,81 @@ export default function PoiDetail() {
           ]}
         >
           <div className="poi__leftColumn">
-            <ImageFile url={poi?.image_url} onChange={(newVal: any) => setImage(newVal)} />
-            <AudioFile
-              label="Fichier audio"
-              id="audio"
-              onChange={(newVal: any) => setAudio(newVal)}
-            />
+            <div className="form__row">
+              <ImageFile url={poi?.image_url} onChange={(newVal: any) => setImage(newVal)} />
+            </div>
+            <div className="form__row">
+              <AudioFile
+                label="Fichier audio"
+                id="audio"
+                onChange={(newVal: any) => setAudio(newVal)}
+              />
+            </div>
 
-            <InputTextarea label="Sous-titres" id="subtitle" value={translations[0].value} />
+            <div className="form__row">
+              <InputTextarea label="Sous-titres" id="subtitle" value={translations[0].value} />
+            </div>
           </div>
           <div className="poi__rightColumn">
-            <InputText
-              label="Nom de l'objet"
-              id="name"
-              value={poi?.title}
-              onChange={(newVal: string) => setPoi({ ...poi!, title: newVal })}
-            />
-            <InputText
-              label="Tag azure"
-              id="azure_tag"
-              value={poi?.exhibition_number}
-              onChange={(newVal: number) => setPoi({ ...poi!, exhibition_number: newVal })}
-            />
-            <Select
-              label="Étages"
-              id="floor"
-              selected={poi?.area}
-              options={['Bleu', 'Jaune', 'Vert']}
-              onChange={(newVal: number) => setPoi({ ...poi!, area: newVal })}
-            />
-            <Tags label="Catégories" id="tags" tags={getTags(tags)} />
-            <InputText
-              label="Lieu"
-              id="location"
-              value={poi?.location}
-              onChange={(newVal: string) => setPoi({ ...poi!, location: newVal })}
-            />
-            <InputText
-              label="Date"
-              id="date"
-              value={poi?.periode}
-              onChange={(newVal: string) => setPoi({ ...poi!, periode: newVal })}
-            />
-            <InputText
-              label="Constructeur"
-              id="manufacturer"
-              value={poi?.manufacturer}
-              onChange={(newVal: string) => setPoi({ ...poi!, manufacturer: newVal })}
-            />
-            <InputTextarea label="Texte" id="description" value={translations[1].value} />
+            <div className="form__row">
+              <InputText
+                label="Nom de l'objet"
+                id="name"
+                value={poi?.title}
+                onChange={(newVal: string) => setPoi({ ...poi!, title: newVal })}
+              />
+            </div>
+            <div className="form__row form__row--2-1">
+              <InputText
+                label="Tag azure"
+                id="azure_tag"
+                value={poi?.exhibition_number}
+                onChange={(newVal: number) => setPoi({ ...poi!, exhibition_number: newVal })}
+              />
+              <Select
+                label="Étages"
+                id="floor"
+                selected={poi?.area}
+                options={['Bleu', 'Jaune', 'Vert']}
+                onChange={(newVal: number) => setPoi({ ...poi!, area: newVal })}
+              />
+            </div>
+            <div className="form__row">
+              <Tags label="Catégories" id="tags" tags={getTags(tags)} />
+            </div>
+            <div className="form__row">
+              <InputText
+                label="Lieu"
+                id="location"
+                value={poi?.location}
+                onChange={(newVal: string) => setPoi({ ...poi!, location: newVal })}
+              />
+              <InputText
+                label="Date"
+                id="date"
+                value={poi?.periode}
+                onChange={(newVal: string) => setPoi({ ...poi!, periode: newVal })}
+              />
+              <InputText
+                label="Constructeur"
+                id="manufacturer"
+                value={poi?.manufacturer}
+                onChange={(newVal: string) => setPoi({ ...poi!, manufacturer: newVal })}
+              />
+            </div>
+            <div className="form__row">
+              <InputTextarea label="Texte" id="description" value={translations[1].value} />
+            </div>
           </div>
-          <Checkbox
-            id="archive"
-            label="Archiver"
-            value={poi?.archived}
-            onChange={(newVal: boolean) => setPoi({ ...poi!, archived: newVal })}
-          />
-          <Submit title="Sauvegarder" />
+          <div className="poi__lastRow">
+            <Checkbox
+              id="archive"
+              label="Archiver"
+              value={poi?.archived}
+              onChange={(newVal: boolean) => setPoi({ ...poi!, archived: newVal })}
+            />
+            <Submit title="Sauvegarder" />
+          </div>
         </Form>
       </div>
     </article>

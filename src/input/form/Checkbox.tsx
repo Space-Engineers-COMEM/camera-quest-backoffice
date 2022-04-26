@@ -16,7 +16,7 @@ export default function Checkbox({ onChange, ...props }: FormInputType) {
 
   // Template
   const displayView = () => (
-    <div className="form__row">
+    <div className="form__input form__input--checkbox">
       <input
         id={props.id}
         name={props.id}

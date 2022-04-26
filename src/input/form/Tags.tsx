@@ -64,7 +64,7 @@ export default function Tags(props: TagsType & FormInputType) {
 
   /* Template */
   const displayView = () => (
-    <div className="form__row">
+    <div className="form__input form__input--tags">
       <label htmlFor={props.id}>{props.label}</label>
       <input
         id={props.id}

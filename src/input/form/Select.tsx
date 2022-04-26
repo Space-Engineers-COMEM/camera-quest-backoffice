@@ -20,7 +20,7 @@ export default function Select({ onChange, ...props }: FormInputType & SelectTyp
 
   /* Template */
   const displayContent = () => (
-    <div className="form__row">
+    <div className="form__input form__input--select">
       <label htmlFor={props.id}>{props.label}</label>
       <select defaultValue={props.selected} id={props.id} name={props.id} onChange={handleChange}>
         {props.options.map((option, index) => (

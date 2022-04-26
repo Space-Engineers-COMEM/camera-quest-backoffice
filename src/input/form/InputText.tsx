@@ -7,7 +7,7 @@ export default function InputText({ onChange, ...props }: FormInputType) {
   };
 
   const displayView = () => (
-    <div className="form__row">
+    <div className="form__input form__input--text">
       <label htmlFor={props.id}>{props.label}</label>
       <input
         id={props.id}

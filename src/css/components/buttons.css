@@ -6,10 +6,10 @@
   font-weight: 700;
   text-decoration: none;
   color: var(--white);
+  box-shadow: var(--shadow-btn-inner);
 }
 
 .button__edit {
-
 }
 
 .poisContainer .button__edit {
@@ -19,7 +19,20 @@
 }
 
 .button__delete {
+}
 
+.button__close {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(203, 203, 203, 0.5);
+  border: none;
+  border-radius: 100px;
+  box-shadow: var(--shadow-internal);
+}
+
+.button__modal {
+  border: none;
+  width: 400px;
 }
 
 .poisContainer .button__delete {
