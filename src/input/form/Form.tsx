@@ -21,7 +21,6 @@ export default function Form(props: FormType) {
     // Adapt request if file type is audio or image
     if (data.type) {
       let type = 'image';
-      console.log(data.type);
       if (data.type === 'audio/mpeg') type = 'audio';
       const formData = new FormData();
       formData.append(type, data);
@@ -52,7 +51,7 @@ export default function Form(props: FormType) {
    */
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    // Each object send a request to the specified path
+    // Each object specified in the prop send a request to the specified path
     props.data.map((item: { data: any; path: string }) => {
       const method = id === 'create' ? 'post' : 'patch';
       if (!item.data) return;
