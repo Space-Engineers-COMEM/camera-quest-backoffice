@@ -12,7 +12,7 @@ export default function AudioFile({ onChange, ...props }: FormInputType) {
   const displayView = () => (
     <div className="form__input form__input--audio">
       <label htmlFor={props.id}>{props.label}</label>
-      <small>{props.value[0] ? `Fichier actuel: ${props.value[0].name}` : ''}</small>
+      <small>{props.value && props.value[0] ? `Fichier actuel: ${props.value[0].name}` : ''}</small>
       <input id={props.id} type="file" accept="audio/*" onChange={onSelectFile} />
     </div>
   );
