@@ -34,7 +34,7 @@ export default function PoiCard(props: PoiProps) {
         <i className="fa-solid fa-trash-can" />
       </button>
       <span className={`poiArchived ${props.archived ? '' : 'hidden'}`}>Archivé</span>
-      <img alt="" src={props.imageUrl} />
+      <img alt="" src={props.imageUrl || '/img/defaultPoi.png'} />
       <div className="poiDataContainer">
         <div>
           <div className="poiTitle">{props.title}</div>

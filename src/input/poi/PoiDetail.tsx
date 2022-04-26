@@ -45,6 +45,11 @@ export default function PoiDetail() {
         setTags(res.data.content.tags);
         setResources(res.data.content.resources);
         setTranslations(res.data.content.translations);
+
+        // Dummy data if translation is undefined. Not optimal.
+        if (res.data.content.translations === undefined) {
+          setTranslations([{ value: '(Pas de traduction)' }, { value: '(Pas de traduction)' }]);
+        }
       })
       .catch((err) => {
         setIsLoaded(true);
@@ -69,23 +74,19 @@ export default function PoiDetail() {
   const displayContent = () => (
     <article className="poi">
       <div className="poi__container">
-        <Form
-          path="pois"
-          data={[
-            { data: image, path: 'pois' },
-            { data: audio, path: 'pois' },
-            { data: { ...poi }, path: 'pois' },
-          ]}
-        >
+        <Form path="pois" data={[{ data: poi, path: 'pois' }]}>
           <div className="poi__leftColumn">
             <div className="form__row">
-              <ImageFile url={poi?.image_url} onChange={(newVal: any) => setImage(newVal)} />
+              <ImageFile
+                url={poi?.image_url}
+                onChange={(newVal: any) => setPoi({ ...poi!, image: newVal })}
+              />
             </div>
             <div className="form__row">
               <AudioFile
                 label="Fichier audio"
                 id="audio"
-                onChange={(newVal: any) => setAudio(newVal)}
+                onChange={(newVal: any) => setPoi({ ...poi!, audio: newVal })}
               />
             </div>
 

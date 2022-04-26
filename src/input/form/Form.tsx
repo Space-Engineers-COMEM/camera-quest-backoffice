@@ -14,26 +14,25 @@ type FormType = {
 export default function Form(props: FormType) {
   const { id } = useParams<'id'>();
 
+  const transformJSONtoFormData = (json: any) => {
+    const formData = new FormData();
+    Object.keys(json).forEach((key) => {
+      formData.append(key, json[key]);
+    });
+    return formData;
+  };
+
   const request = (data: any, path: string, method: any) => {
     const url = `${API_URL}/${path}/${method !== 'post' ? id : ''}`;
-    let headers = { 'Content-Type': 'application/json' };
 
-    // Adapt request if file type is audio or image
-    if (data.type) {
-      let type = 'image';
-      if (data.type === 'audio/mpeg') type = 'audio';
-      const formData = new FormData();
-      formData.append(type, data);
-      data = formData;
-      headers = { 'Content-Type': 'multipart/form-data' };
-    }
+    const formData = transformJSONtoFormData(data);
 
     // Request
     axios({
       method,
       url,
-      data,
-      headers,
+      data: formData,
+      headers: { 'Content-Type': 'multipart/form-data' },
     })
       .then((res) => {
         console.log(res);
