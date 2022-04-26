@@ -13,9 +13,7 @@ export default function Modal(props: ModalProps) {
   const navigator = useNavigate();
   const domContainer = document.getElementById('modal_root')!;
 
-  const closeButton = () => {
-    navigator(-1);
-  };
+  const closeButton = () => navigator(-1);
 
   const content = () => (
     <dialog className="modal" open>
