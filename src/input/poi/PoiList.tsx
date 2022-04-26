@@ -28,7 +28,7 @@ export default function PoisList() {
         setIsLoaded(true);
         setError(err);
       });
-  }, []);
+  }, [data]);
 
   const displayContent = () => (
     <ul>
