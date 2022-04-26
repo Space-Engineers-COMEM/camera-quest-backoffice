@@ -17,6 +17,12 @@ type PoiProps = {
 export default function PoiCard(props: PoiProps) {
   const location = useLocation();
 
+  const getArea = (areaNumber: number) => {
+    // This ideally shouldn't be hardcoded, but it's a quick fix for now.
+    const areas = ['Jaune', 'Bleu', 'Rouge', 'Gris'];
+    return areas[areaNumber - 1];
+  };
+
   const handleClick = () => {
     axios
       .delete(`${API_URL}/pois/${props.id}`)
@@ -38,7 +44,7 @@ export default function PoiCard(props: PoiProps) {
       <div className="poiDataContainer">
         <div>
           <div className="poiTitle">{props.title}</div>
-          <div className="poiStage">Étage {props.area}</div>
+          <div className="poiStage">Étage {getArea(props.area)}</div>
         </div>
         <PoiTags poiId={props.id} langId={1} />
         <Link
