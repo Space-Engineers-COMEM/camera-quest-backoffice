@@ -14,6 +14,11 @@ type FormType = {
 export default function Form(props: FormType) {
   const { id } = useParams<'id'>();
 
+  /**
+   * It takes a JSON object and returns a FormData object
+   * @param {any} json - the json object that you want to convert to form data
+   * @returns A new FormData object with the keys and values of the json object passed in.
+   */
   const transformJSONtoFormData = (json: any) => {
     const formData = new FormData();
     Object.keys(json).forEach((key) => {
@@ -22,10 +27,17 @@ export default function Form(props: FormType) {
     return formData;
   };
 
+  /**
+   * It takes in a data object, a path, and a method, and then it makes a request to the API
+   * @param {any} data - The data you want to send to the server.
+   * @param {string} path - The path to the API endpoint.
+   * @param {any} method - The HTTP method to use.
+   */
   const request = (data: any, path: string, method: any) => {
     const url = `${API_URL}/${path}/${method !== 'post' ? id : ''}`;
-
-    const formData = transformJSONtoFormData(data);
+    let formData;
+    if (data.type !== 'audio/mpeg') formData = transformJSONtoFormData(data);
+    else formData = data;
 
     // Request
     axios({
