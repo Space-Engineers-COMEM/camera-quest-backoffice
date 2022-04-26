@@ -112,8 +112,11 @@
 
             > img {
               border-radius: var(--default-border-radius);
-              width: 100%;
+              min-width: 100%;
+              width: auto;
+              object-fit: cover;
               height: auto;
+              max-height: 250px;
             }
           }
 
