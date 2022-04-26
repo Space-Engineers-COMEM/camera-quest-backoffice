@@ -118,7 +118,7 @@ export default function PoiDetail() {
                 label="Étages"
                 id="floor"
                 selected={poi?.area}
-                options={['Bleu', 'Jaune', 'Vert']}
+                options={['Jaune', 'Bleu', 'Rouge', 'Gris']}
                 onChange={(newVal: number) => setPoi({ ...poi!, area: newVal })}
               />
             </div>

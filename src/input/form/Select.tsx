@@ -24,7 +24,7 @@ export default function Select({ onChange, ...props }: FormInputType & SelectTyp
       <label htmlFor={props.id}>{props.label}</label>
       <select defaultValue={props.selected} id={props.id} name={props.id} onChange={handleChange}>
         {props.options.map((option, index) => (
-          <option key={option} value={index}>
+          <option key={option} value={index + 1}>
             {option}
           </option>
         ))}
