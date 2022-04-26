@@ -1,0 +1,28 @@
+.card {
+  width: 732px;
+  min-height: 229px;
+  box-shadow: var(--shadow-popup);
+  padding: var(--default-padding);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.card > * {
+  padding: var(--default-padding);
+  margin: 0;
+}
+
+.card > p {
+  width: 80%;
+  font-size: var(--fs-p-regular);
+  font-weight: 300;
+}
+
+.card > a {
+  align-self: flex-end;
+}
+

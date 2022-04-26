@@ -1,0 +1,27 @@
+.button {
+  font-size: var(--fs-btn);
+  background-color: var(--yellow);
+  border-radius: var(--default-border-radius);
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.button__edit {
+
+}
+
+.poisContainer .button__edit {
+  padding: var(--default-padding);
+  display: block;
+  text-align: center;
+}
+
+.button__delete {
+
+}
+
+.poisContainer .button__delete {
+  position: relative;
+}

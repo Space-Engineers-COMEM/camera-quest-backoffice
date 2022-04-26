@@ -5,5 +5,15 @@ h1,
 h2,
 h3,
 h4 {
-  // …
+
+}
+
+h1 {
+  font-size: var(--fs-h1-detail);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--fs-h2-detail);
+  font-weight: 700;
 }

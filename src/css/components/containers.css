@@ -1,0 +1,28 @@
+.pageContainer {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.poisPageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.poisContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.filtersContainer {
+  width: 275px;
+  height: 520px;
+  background-color: tomato;
+}

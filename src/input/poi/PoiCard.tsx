@@ -29,7 +29,7 @@ export default function PoiCard(props: PoiProps) {
 
   return (
     <li>
-      <button type="button" onClick={handleClick}>
+      <button className="button__delete" type="button" onClick={handleClick}>
         Supprimer
       </button>
       <br />
@@ -38,10 +38,13 @@ export default function PoiCard(props: PoiProps) {
       <div>{props.title}</div>
       <div>Étage {props.area}</div>
       <PoiTags poiId={props.id} langId={1} />
-      <Link to={String(props.id)} state={{ backgroundLocation: location }}>
+      <Link
+        className="button button__edit"
+        to={String(props.id)}
+        state={{ backgroundLocation: location }}
+      >
         Modifier
       </Link>
-      <hr />
     </li>
   );
 }

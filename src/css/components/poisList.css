@@ -1,0 +1,23 @@
+.poisContainer > ul {
+  padding: 0px;
+  margin: 0px;
+  width: 70%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.poisContainer li {
+  list-style: none;
+  margin: 0px;
+  padding: var(--default-padding);
+  width: calc(100% / 3 - 20px);
+}
+
+.poisContainer img {
+  width: 100%;
+  max-width: 230px;
+  max-height: 174px;
+  object-fit: cover;
+}

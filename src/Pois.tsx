@@ -10,10 +10,15 @@ import PoiAdder from './input/poi/PoiAdder';
  */
 export default function Pois() {
   return (
-    <div>
-      <PoisFilter />
-      <PoisList />
-      <PoiAdder />
+    <div className="pageContainer poisPageContainer">
+      <div>
+        <h1>Liste des objets</h1>
+      </div>
+      <div className="poisContainer">
+        <PoisFilter />
+        <PoisList />
+        <PoiAdder />
+      </div>
     </div>
   );
 }
