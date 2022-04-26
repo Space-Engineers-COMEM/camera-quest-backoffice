@@ -29,7 +29,7 @@ export default function PoiDetail() {
   const [audio, setAudio] = useState();
   const [tags, setTags] = useState<Array<TagType>>();
   const [resources, setResources] = useState<ResourceType>();
-  const [translations, setTranslations] = useState<TranslationType>();
+  const [translations, setTranslations] = useState<any>();
   // const [lang, setLang] = useState<number>();
 
   const [error, setError] = useState<any>(null);
@@ -85,7 +85,7 @@ export default function PoiDetail() {
               onChange={(newVal: any) => setAudio(newVal)}
             />
 
-            <InputTextarea label="Sous-titres" id="subtitle" value="" />
+            <InputTextarea label="Sous-titres" id="subtitle" value={translations[0].value} />
           </div>
           <div className="poi__rightColumn">
             <InputText
@@ -126,7 +126,7 @@ export default function PoiDetail() {
               value={poi?.manufacturer}
               onChange={(newVal: string) => setPoi({ ...poi!, manufacturer: newVal })}
             />
-            <InputTextarea label="Texte" id="description" value="" />
+            <InputTextarea label="Texte" id="description" value={translations[1].value} />
           </div>
           <Checkbox
             id="archive"
