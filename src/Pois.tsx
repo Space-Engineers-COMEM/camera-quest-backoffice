@@ -15,7 +15,7 @@ export default function Pois() {
         <h1>Liste des objets</h1>
       </div>
       <div className="poisContainer">
-        <PoisFilter />
+        {/* <PoisFilter /> */}
         <PoisList />
         <div className="positionner">
           <PoiAdder />
