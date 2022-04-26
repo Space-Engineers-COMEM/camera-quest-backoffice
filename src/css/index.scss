@@ -5,7 +5,15 @@
 
 @import './settings/reset.css';
 @import './settings/variable.css';
+@import './fonts/fonts.css';
 
+@import './components/containers.css';
+@import './components/cards.css';
+@import './components/buttons.css';
+@import './components/poisList.css';
+@import './components/generic.css';
+
+@import './elements/layout.css';
 @import './elements/headings.css';
 
 // WARNING: this file is temporary and should refactored !!

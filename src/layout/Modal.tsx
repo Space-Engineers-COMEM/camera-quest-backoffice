@@ -1,27 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
+import '../css/objects/modal.scss';
 
 type ModalProps = {
   children: any;
+  title: string;
+  description?: string;
 };
 
 export default function Modal(props: ModalProps) {
   const navigator = useNavigate();
-  // const domNode = document.createElement('dialog');
   const domContainer = document.getElementById('modal_root')!;
-  // Note: the ! sign say to Typescript that this variable is never null
 
-  const closeButton = () => {
-    navigator(-1);
-  };
+  const closeButton = () => navigator(-1);
 
   const content = () => (
-    <dialog open>
-      <button type="button" onClick={closeButton}>
-        Close
-      </button>
-      <div>{props.children}</div>
+    <dialog className="modal" open>
+      <div className="modal__container">
+        <header className="modal__header">
+          <hgroup>
+            <h1>{props.title}</h1>
+            {props.description && <div>{props.description}</div>}
+          </hgroup>
+          <button type="button" className="button button__close" onClick={closeButton}>
+            <i className="fa-solid fa-xmark" />
+          </button>
+        </header>
+
+        <main className="modal__content">{props.children}</main>
+      </div>
     </dialog>
   );
 

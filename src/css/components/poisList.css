@@ -1,0 +1,76 @@
+.poisContainer > ul {
+  padding: 0px;
+  margin: 0px;
+  width: 70%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.poisContainer > ul > li {
+  list-style: none;
+  margin: 0px;
+  width: calc(100% / 3 - 20px);
+  position: relative;
+  box-shadow: var(--shadow-popup);
+  border-radius: var(--default-border-radius);
+  margin-bottom: 40px;
+}
+
+.poisContainer img {
+  width: 100%;
+  max-width: 230px;
+  max-height: 174px;
+  object-fit: cover;
+  border-top-right-radius: var(--default-border-radius);
+  border-top-left-radius: var(--default-border-radius);
+}
+
+.poiDataContainer .poiTitle {
+  font-size: var(--fs-p-regular);
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.poiDataContainer .poiStage {
+  font-size: var(--fs-p-detail);
+  font-weight: 300;
+  color: var(--gray);
+  margin-bottom: 15px;
+}
+
+.poiDataContainer .tag:not(:last-child)::after {
+    content: " — ";
+}
+
+.poiDataContainer .poiTags {
+  margin-bottom: 25px;
+}
+
+.poiDataContainer .poiTags > *{
+  font-size: var(--fs-p-detail);
+  font-weight: 300;
+  color: var(--gray);
+}
+
+.poisContainer .poiArchived {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: var(--gray);
+  padding: 7px 12px;
+  border-radius: 50px;
+  line-height: var(--fs-p-regular);
+  font-size: var(--fs-p-regular);
+  box-shadow: var(--shadow-btn-inner);
+  color: var(--white);
+  font-weight: 300;
+}
+
+.positionner {
+  position: relative;
+  width: 64px;
+  margin-left: 20px;
+}

@@ -24,8 +24,8 @@ function HomeCard(props: HomeProps) {
     <div className="card">
       <h2 className="card__title">{props.title}</h2>
       <p>{props.children}</p>
-      <Link to={props.route} className="button">
-        Éditer
+      <Link to={props.route} className="button button__edit">
+        Éditer <i className="fa-solid fa-angle-right" />
       </Link>
     </div>
   );
@@ -37,9 +37,9 @@ function HomeCard(props: HomeProps) {
  */
 export default function Home() {
   return (
-    <div>
-      <h1>Que souhaitez-vous faire ?</h1>
-      <HomeCard title="Un objet" route="/objets">
+    <div className="pageContainer homeContainer">
+      <h1>Que souhaitez-vous éditer ?</h1>
+      <HomeCard title="Un objet" route="/objects">
         Modifier ou créer un objet qui sera présenté dans la collection du musée et ajouté à un
         étage pour être présent dans l’application.
       </HomeCard>

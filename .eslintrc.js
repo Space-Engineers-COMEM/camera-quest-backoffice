@@ -29,5 +29,7 @@ module.exports = {
     'react/no-unused-state': [1],
     'jsx-a11y/label-has-associated-control': [0],
     'no-else-return': [0, { allowElseIf: true }],
+    'consistent-return': [1],
+    'no-param-reassign': [1],
   },
 };

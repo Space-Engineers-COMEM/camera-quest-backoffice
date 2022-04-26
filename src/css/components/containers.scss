@@ -1,0 +1,56 @@
+.pageContainer {
+  max-width: 100%;
+  margin: 0 15px;
+}
+
+@media screen and (min-width: 576px) {
+  .pageContainer {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pageContainer {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .pageContainer {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .pageContainer {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.poisPageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.poisContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filtersContainer {
+  width: 275px;
+  height: 520px;
+  background-color: tomato;
+}

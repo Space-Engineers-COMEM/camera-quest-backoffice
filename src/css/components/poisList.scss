@@ -1,0 +1,41 @@
+.poisContainer > ul {
+  padding: 0px;
+  margin: 0px;
+  width: 70%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  li {
+    list-style: none;
+    margin: 0px;
+    padding: var(--default-padding);
+    width: 100%;
+    // width: calc(100% / 3 - 20px);
+  }
+
+  img {
+    width: 100%;
+    max-width: 230px;
+    max-height: 174px;
+    object-fit: cover;
+  }
+
+  .poiCard {
+    border-radius: 10px;
+    box-shadow: var(--shadow-popup);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .poisContainer > ul > li {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .poisContainer > ul > li {
+    width: 33.33333333%;
+  }
+}

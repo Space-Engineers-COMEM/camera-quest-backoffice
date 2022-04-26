@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "NEXT Book";
+  src: url('../fonts/NEXTBook-Bold.otf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: "NEXT Book";
+  src: url('../fonts/NEXTBook-Regular.otf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: "NEXT Book";
+  src: url('../fonts/NEXTBook-Thin.otf');
+  font-weight: 300;
+}
+
+* {
+  font-family: "NEXT Book";
+  font-weight: 400;
+}

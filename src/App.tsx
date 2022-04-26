@@ -32,17 +32,17 @@ export default function App() {
       <Routes location={state?.backgroundLocation || location}>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/objets" element={<Pois />} />
-        <Route path="/objets/:id" element={<PoiDetail />} />
+        <Route path="/objects" element={<Pois />} />
+        <Route path="/objects/:id" element={<PoiDetail />} />
+        <Route path="/objects/create" element={<PoiDetail />} />
         <Route path="/*" element={<Error404 />} />
-        {/* <Route path="/:id" element={<POI />} /> */}
         {/* <Route path="/language" element={<Language />} /> */}
         {/* <Route path="/congrat" element={<Congrat />} /> */}
       </Routes>
 
       {state?.backgroundLocation && (
         <Routes>
-          <Route path="/objets/:id" element={<PoiDetail />} />
+          <Route path="/objects/:id" element={<PoiDetail />} />
         </Routes>
       )}
     </div>

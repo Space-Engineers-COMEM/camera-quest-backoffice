@@ -25,10 +25,12 @@ export default function PoiTags(props: PoiTagsProps) {
   }, []);
 
   return (
-    <ul>
+    <div className="poiTags">
       {tags.map((tag) => (
-        <li key={tag.id}>{tag.name}</li>
+        <span className="tag" key={tag.id}>
+          {tag.name}
+        </span>
       ))}
-    </ul>
+    </div>
   );
 }

@@ -1,0 +1,200 @@
+/********************************
+ * MODAL (OBJECT)
+ ********************************/
+// Layout of modals
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  // position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #00000044;
+
+  &__container {
+    background-color: var(--background-color);
+    padding: 2rem var(--default-padding);
+    border-radius: var(--default-border-radius);
+    width: 90%;
+    max-width: 1080px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    h1 { margin: 0 }
+  }
+
+  .poi {
+    input {
+      width: calc(100% - 20px);
+      margin: 0 10px;
+    }
+    label {
+      display: block;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 22px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      box-shadow: var(--shadow-internal);
+      margin: 5px 0;
+      border-radius: 10px;
+      height: 40px;
+      padding: 10px;
+      border: none;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--gray);
+    }
+
+    form {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .form {
+        &__row {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+
+          &--2-1 {
+            .form__input:first-of-type {
+              width: 66.666666%;
+            }
+            .form__input:last-of-type {
+              width: 33.3333333%;
+            }
+          }
+        }
+
+        &__input {
+          width: calc(100% - 20px);
+          margin: 0 10px;
+
+          &--audio {
+            > input {
+              background-color: var(--lightYellow);
+              box-shadow: var(--shadow-btn-inner);
+              filter: drop-shadow(3.42901e-16px 1px 10px rgba(0, 0, 0, 0.05));
+            }
+          }
+
+          &--image {
+            margin-bottom: -40px;
+
+            > input {
+              visibility: hidden;
+              height: 0;
+              margin: 0!important;
+              padding: 0;
+            }
+
+            > label {
+              position: relative;
+              font-size: 30px;
+              top: -42px;
+              left: 5px;
+              color: var(--white);
+              text-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
+            }
+
+            > img {
+              border-radius: var(--default-border-radius);
+              min-width: 100%;
+              width: auto;
+              object-fit: cover;
+              height: auto;
+              max-height: 250px;
+            }
+          }
+
+          &--checkbox {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: auto;
+
+            > input[type=checkbox] {
+              width: 40px;
+              margin-right: 10px;
+              border-radius: var(--default-border-radius);
+
+            }
+          }
+
+          &--textarea > textarea {
+            min-height: 5rem;
+          }
+
+          &--tags > ul.tags {
+            display: flex;
+            padding: 0;
+
+            > li {
+              list-style: none;
+              margin: 0;
+              padding: 0;
+              background-color: var(--lightGray);
+              color: var(--white);
+              padding: 5px 10px;
+              border-radius: 100px;
+              box-shadow: var(--shadow-btn-inner);
+              font-weight: 300;
+              margin-right: 10px;
+
+              > button {
+                background: none;
+                border: none;
+                color: var(--white);
+              }
+            }
+          }
+        }
+
+        &__input:last-of-type {
+          margin-right: 10px;
+        }
+
+        &__input:first-of-type {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    &__leftColumn {
+      width: calc(40% - 5px);
+      margin-right: 5px;
+    }
+
+    &__rightColumn {
+      width: calc(60% - 5px);
+      margin-left: 5px;
+    }
+
+    &__lastRow {
+      width: 100%;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .modal .poi__leftColumn, .modal .poi__rightColumn {
+    margin: 0;
+    width: 100%;
+  }
+}
