@@ -30,21 +30,21 @@ export default function PoiCard(props: PoiProps) {
   return (
     <li>
       <button className="button__delete" type="button" onClick={handleClick}>
-        Supprimer
+        <i className="fa-solid fa-trash-can" />
       </button>
-      <br />
-      {/* Change the inline rule width in CSS */}
-      <img width="300" alt="" src={props.imageUrl} />
-      <div>{props.title}</div>
-      <div>Étage {props.area}</div>
-      <PoiTags poiId={props.id} langId={1} />
-      <Link
-        className="button button__edit"
-        to={String(props.id)}
-        state={{ backgroundLocation: location }}
-      >
-        Modifier
-      </Link>
+      <img alt="" src={props.imageUrl} />
+      <div className="poiDataContainer">
+        <div className="poiTitle">{props.title}</div>
+        <div className="poiStage">Étage {props.area}</div>
+        <PoiTags poiId={props.id} langId={1} />
+        <Link
+          className="button button__edit"
+          to={String(props.id)}
+          state={{ backgroundLocation: location }}
+        >
+          Modifier
+        </Link>
+      </div>
     </li>
   );
 }

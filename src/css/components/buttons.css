@@ -23,5 +23,11 @@
 }
 
 .poisContainer .button__delete {
-  position: relative;
+  position: absolute;
+  top: var(--default-padding);
+  right: var(--default-padding);
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: var(--fs-h2-detail);
 }

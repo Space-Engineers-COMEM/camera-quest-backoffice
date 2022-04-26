@@ -19,6 +19,11 @@
 .poisContainer {
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
+}
+
+.poiDataContainer {
+  padding: var(--default-padding);
 }
 
 .filtersContainer {
