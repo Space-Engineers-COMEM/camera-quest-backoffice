@@ -7,7 +7,7 @@ export default function Checkbox({ onChange, ...props }: FormInputType) {
     if (props.value === undefined) {
       onChange!(false);
     }
-  });
+  }, []);
 
   // Trigger when the checkbox is checked/unchecked
   const handleChange = (event: any) => {

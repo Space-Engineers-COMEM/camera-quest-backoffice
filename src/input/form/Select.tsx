@@ -12,7 +12,7 @@ export default function Select({ onChange, ...props }: FormInputType & SelectTyp
     if (props.selected === undefined) {
       onChange!(0);
     }
-  });
+  }, []);
 
   const handleChange = (event: any) => {
     onChange!(event.target.value);
