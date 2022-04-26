@@ -25,9 +25,11 @@ export default function PoiDetail() {
   const { id } = useParams<'id'>();
 
   const [poi, setPoi] = useState<PoiType>();
+  const [image, setImage] = useState();
+  const [audio, setAudio] = useState();
   const [tags, setTags] = useState<Array<TagType>>();
   const [resources, setResources] = useState<ResourceType>();
-  const [translations, setTranslations] = useState<TranslationType>();
+  const [translations, setTranslations] = useState<any>();
   // const [lang, setLang] = useState<number>();
 
   const [error, setError] = useState<any>(null);
@@ -67,15 +69,23 @@ export default function PoiDetail() {
   const displayContent = () => (
     <article className="poi">
       <div className="poi__container">
-        <Form path="pois" data={[{ data: { ...poi }, path: 'pois' }]}>
+        <Form
+          path="pois"
+          data={[
+            { data: image, path: 'pois' },
+            { data: audio, path: 'pois' },
+            { data: { ...poi }, path: 'pois' },
+          ]}
+        >
           <div className="poi__leftColumn">
-            <ImageFile
-              url={poi?.image_url}
-              onChange={(newVal: any) => setPoi({ ...poi!, image: newVal })}
+            <ImageFile url={poi?.image_url} onChange={(newVal: any) => setImage(newVal)} />
+            <AudioFile
+              label="Fichier audio"
+              id="audio"
+              onChange={(newVal: any) => setAudio(newVal)}
             />
-            <AudioFile label="Fichier audio" id="audio" />
 
-            <InputTextarea label="Sous-titres" id="subtitle" value="" />
+            <InputTextarea label="Sous-titres" id="subtitle" value={translations[0].value} />
           </div>
           <div className="poi__rightColumn">
             <InputText
@@ -116,7 +126,7 @@ export default function PoiDetail() {
               value={poi?.manufacturer}
               onChange={(newVal: string) => setPoi({ ...poi!, manufacturer: newVal })}
             />
-            <InputTextarea label="Texte" id="description" value="" />
+            <InputTextarea label="Texte" id="description" value={translations[1].value} />
           </div>
           <Checkbox
             id="archive"
