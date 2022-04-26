@@ -6,6 +6,7 @@
   font-weight: 700;
   text-decoration: none;
   color: var(--white);
+  box-shadow: var(--shadow-btn-inner);
 }
 
 .button__edit {
@@ -30,4 +31,26 @@
   background-color: transparent;
   color: white;
   font-size: var(--fs-h2-detail);
+}
+
+.button__grayed {
+  background-color: var(--gray);
+}
+
+.button__add {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button__add i {
+  font-size: 48px;
+}
+
+.poisContainer .button__add {
+  position: fixed;
+  bottom: 100px;
 }

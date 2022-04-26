@@ -10,8 +10,8 @@ export default function PoiAdder() {
   const location = useLocation();
 
   return (
-    <Link to="create" state={{ backgroundLocation: location }}>
-      +
+    <Link className="button button__add" to="create" state={{ backgroundLocation: location }}>
+      <i className="fa-solid fa-plus" />
     </Link>
   );
 }

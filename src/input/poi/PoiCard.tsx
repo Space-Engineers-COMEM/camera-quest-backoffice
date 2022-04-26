@@ -11,6 +11,7 @@ type PoiProps = {
   title: string;
   imageUrl: string;
   area: number;
+  archived: boolean;
 };
 
 export default function PoiCard(props: PoiProps) {
@@ -32,13 +33,16 @@ export default function PoiCard(props: PoiProps) {
       <button className="button__delete" type="button" onClick={handleClick}>
         <i className="fa-solid fa-trash-can" />
       </button>
+      <span className={`poiArchived ${props.archived ? '' : 'hidden'}`}>Archivé</span>
       <img alt="" src={props.imageUrl} />
       <div className="poiDataContainer">
-        <div className="poiTitle">{props.title}</div>
-        <div className="poiStage">Étage {props.area}</div>
+        <div>
+          <div className="poiTitle">{props.title}</div>
+          <div className="poiStage">Étage {props.area}</div>
+        </div>
         <PoiTags poiId={props.id} langId={1} />
         <Link
-          className="button button__edit"
+          className={`button button__edit ${props.archived ? 'button__grayed' : ''}`}
           to={String(props.id)}
           state={{ backgroundLocation: location }}
         >

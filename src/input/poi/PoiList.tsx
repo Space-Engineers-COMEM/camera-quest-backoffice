@@ -39,6 +39,7 @@ export default function PoisList() {
           title={poi.title}
           imageUrl={poi.image_url}
           area={poi.area}
+          archived={poi.archived}
         />
       ))}
     </ul>

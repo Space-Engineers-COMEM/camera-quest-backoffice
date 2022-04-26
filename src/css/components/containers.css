@@ -24,10 +24,15 @@
 
 .poiDataContainer {
   padding: var(--default-padding);
+  height: calc(100% - 174px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .filtersContainer {
-  width: 275px;
+  width: 23%;
   height: 520px;
-  background-color: tomato;
+  /* background-color: tomato; */
+  margin-right: 30px;
 }
