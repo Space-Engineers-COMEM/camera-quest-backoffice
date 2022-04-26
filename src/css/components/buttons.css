@@ -9,6 +9,19 @@
   box-shadow: var(--shadow-btn-inner);
 }
 
+.button:hover {
+  background-color: var(--white);
+  color: var(--yellow);
+  outline: solid 3px var(--yellow);
+}
+
+.button:active {
+  background-color: var(--white);
+  color: var(--yellow);
+  outline: dashed 3px var(--yellow);
+  box-shadow: none;
+}
+
 .button__edit {
 }
 
@@ -28,6 +41,24 @@
   border: none;
   border-radius: 100px;
   box-shadow: var(--shadow-internal);
+}
+
+.button__close:hover {
+  color: rgba(203, 203, 203, 0.5);
+  border: none;
+  border-radius: 100px;
+  box-shadow: var(--shadow-btn-inner);
+  outline: none;
+  background-color: var(--white);
+}
+
+.button__close:active {
+  background-color: rgba(203, 203, 203, 0.5);
+  border: none;
+  border-radius: 100px;
+  box-shadow: var(--shadow-internal);
+  outline: none;
+  color: var(--white);
 }
 
 .button__modal {

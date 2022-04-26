@@ -8,8 +8,8 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
-  position: fixed;
+  min-height: 100vh;
+  // position: fixed;
   top: 0;
   left: 0;
   background-color: #00000044;
@@ -18,7 +18,8 @@
     background-color: var(--background-color);
     padding: 2rem var(--default-padding);
     border-radius: var(--default-border-radius);
-    min-width: 90%;
+    width: 90%;
+    max-width: 1080px;
     display: flex;
     flex-direction: column;
   }
@@ -188,5 +189,12 @@
       display: flex;
       flex-direction: row-reverse;
     }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .modal .poi__leftColumn, .modal .poi__rightColumn {
+    margin: 0;
+    width: 100%;
   }
 }
