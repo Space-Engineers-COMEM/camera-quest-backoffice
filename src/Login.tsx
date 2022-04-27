@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { MailInput, PswInput } from './input/LoginInputs';
 
 export default function Login() {
@@ -10,7 +10,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const postCredentials = (mail: string, psw: string) => {
-    const apiUrl = 'http://127.0.0.1:3333/login';
+    const apiUrl = 'https://api.cameramuseum.app/login';
     const init = {
       method: 'POST',
       headers: new Headers({
@@ -44,7 +44,7 @@ export default function Login() {
   // Redirect user if already logged in.
   const alreadyLoggedIn = () => {
     const token = localStorage.getItem('token');
-    const url = 'http://127.0.0.1:3333/token';
+    const url = 'https://api.cameramuseum.app/token';
     const init = {
       method: 'GET',
       headers: new Headers({
@@ -57,7 +57,7 @@ export default function Login() {
       .then((res) => res.json())
       .then((res) => {
         if (res.isLoggedIn) {
-          navigate('/');
+          navigate('/dashboard');
         }
       });
   };
@@ -65,12 +65,19 @@ export default function Login() {
   useEffect(() => alreadyLoggedIn);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Hello World</h1>
-      <small>{errorMsg || ''}</small>
-      <MailInput setValidation={setEmailValidation} />
-      <PswInput setValidation={setPswValidation} />
-      <input type="submit" value="Login" />
-    </form>
+    <div id="login">
+      <img src="./img/logo.png" alt="Login" />
+      <h1>Camera Museum</h1>
+      <form onSubmit={handleSubmit}>
+        <small>{errorMsg || ''}</small>
+        <MailInput setValidation={setEmailValidation} />
+        <PswInput setValidation={setPswValidation} />
+        <input type="submit" value="Login" className="button button__login" />
+      </form>
+      <Link to="https://cameramuseum.app">
+        <i className="fa-solid fa-angle-left" />
+        Retour au site
+      </Link>
+    </div>
   );
 }

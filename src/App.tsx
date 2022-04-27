@@ -30,8 +30,8 @@ export default function App() {
   return (
     <div className="App">
       <Routes location={state?.backgroundLocation || location}>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Home />} />
+        <Route path="/" element={<Login />} />
         <Route path="/objects" element={<Pois />} />
         <Route path="/objects/:id" element={<PoiDetail />} />
         <Route path="/objects/create" element={<PoiDetail />} />

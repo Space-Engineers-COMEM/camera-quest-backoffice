@@ -22,6 +22,19 @@
   box-shadow: none;
 }
 
+.button__login {
+  border: none;
+  width: 100%;
+  max-width: 320px;
+  padding: 8px 15px;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .button__edit {
 }
 
