@@ -41,7 +41,7 @@
     width: 100%;
     max-width: 480px;
 
-    .error {
+    > small, .error {
       color: var(--yellow);
       font-size: 15px;
       font-weight: 300;

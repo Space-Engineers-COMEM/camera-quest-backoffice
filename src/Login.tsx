@@ -74,10 +74,10 @@ export default function Login() {
         <PswInput setValidation={setPswValidation} />
         <input type="submit" value="Login" className="button button__login" />
       </form>
-      <Link to="https://cameramuseum.app">
+      <a href="https://cameramuseum.app">
         <i className="fa-solid fa-angle-left" />
         Retour au site
-      </Link>
+      </a>
     </div>
   );
 }
